@@ -41,7 +41,7 @@
             compatible = "zmk,behavior-mod-morph";
             label = "SLASH_OR_BSLSH";
             #binding-cells = <0>;
-            bindings = <&kp SLASH>, <&kp BSLSH>;
+            bindings = <&kp SLASH>, <&kp BSLASH>;
             // mods = <(MOD_LSFT|MOD_RSFT)>; // default
         };
 
