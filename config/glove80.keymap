@@ -28,34 +28,31 @@
             bindings = <&mo LOWER>, <&to LOWER>;
         };
 
-        // Home row mods
-        m: m {
+        mt: mt {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            flavor = "balanced";
+            flavor = "tap-preferred";
             tapping-term-ms = <500>;
             quick-tap-ms = <175>;
             require-prior-idle-ms = <150>;
-            hold-trigger-on-release;
-            bindings = <&mo>, <&kp>;
         };
 
-        slash: slash {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <500>;
-            quick-tap-ms = <175>;
-            require-prior-idle-ms = <150>;
-            hold-trigger-on-release;
-            bindings = <&kp RGUI>, <&kp SLASH>;
-        };
-
-        bslash: bslash {
+        slash_or_bslsh: slash_or_bslsh_morph {
             compatible = "zmk,behavior-mod-morph";
+            label = "SLASH_OR_BSLSH";
             #binding-cells = <0>;
-            bindings = <&slash RGUI SLASH>, <&kp BSLSH>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
+            bindings = <&kp SLASH>, <&kp BSLSH>;
+            // mods = <(MOD_LSFT|MOD_RSFT)>; // default
+        };
+
+        my_rgui_slash_combo: my_rgui_slash_combo {
+            compatible = "zmk,behavior-hold-tap";
+            label = "RGUI_SLASH_COMBO";
+            #binding-cells = <0>;
+            tapping-term-ms = <250>;   // 500ms is very long, consider 200-280ms
+            quick-tap-ms = <175>;      // Optional: for tap-preferred, makes taps faster
+            flavor = "tap-preferred";  // Or "balanced". "tap-preferred" is often good for keys that output characters.
+            bindings = <&kp RGUI>, <&slash_or_bslsh>; // Hold RGUI, Tap invokes the morph
         };
 
     };
@@ -110,8 +107,8 @@
     &kp F1      &kp F2      &kp F3      &kp F4      &kp F5                                                                                           &kp F6      &kp F7      &kp F8     &kp F9      &kp F10
     &kp EQUAL   &kp N1      &kp N2      &kp N3      &kp N4      &kp N5                                                                      &kp N6   &kp N7      &kp N8      &kp N9     &kp N0      &kp MINUS
     &kp ESC     &kp Q       &kp W       &kp E       &kp R       &kp T                                                                       &kp Y    &kp U       &kp I       &kp O      &kp P       &kp BSLH
-    &kp TAB     &m LGUI A   &m LALT S   &m LCTRL D  &m LSHFT F  &kp G                                                                       &kp H    &m RSHFT J &m RCTRL K  &m RALT L   &slash      &kp SQT
-    &kp GRAVE   &kp Z       &kp X       &kp C       &kp V       &kp B   &kp LSHFT   &kp LCTRL   &layer_td  &kp LGUI  &kp RCTRL &kp RSHFT    &kp N    &kp M       &kp COMMA   &kp DOT    &kp FSLH    &mo MAGIC
+    &kp TAB     &mt LGUI A   &mt LALT S   &mt LCTRL D  &mt LSHFT F  &kp G                                                                      &kp H    &mt RSHFT J &mt RCTRL K  &mt RALT L   &my_rgui_slash_combo      &kp SQT
+    &kp GRAVE   &kp Z       &kp X       &kp C       &kp V       &kp B   &kp LSHFT   &kp LCTRL   &layer_td  &kp LGUI  &kp RCTRL &kp RSHFT    &kp N    &kp M       &kp COMMA   &kp DOT    &kp FSLH    &mto MAGIC
     &kp PG_UP   &kp HOME    &kp LEFT    &kp LC(LEFT)&kp UP           &kp BSPC    &kp DEL     &kp LALT   &kp RALT  &kp RET   &kp SPACE                &kp DOWN    &kp RC(RIGHT)&kp RIGHT &kp END     &kp PG_DN
     >;
         };
