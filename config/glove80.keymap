@@ -54,7 +54,7 @@
         bslash: bslash {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&slash>, <&kp BSLSH>;
+            bindings = <&slash RGUI SLASH>, <&kp BSLSH>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
