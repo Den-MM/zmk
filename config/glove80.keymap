@@ -31,7 +31,7 @@
         // Home row mods
         m: m {
             compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <0>;
+            #binding-cells = <2>;
             flavor = "balanced";
             tapping-term-ms = <500>;
             quick-tap-ms = <175>;
@@ -43,7 +43,7 @@
         slash: slash {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&m RGUI FSLH>, <&m RGUI BSLH>;
+            bindings = <&m RGUI SLASH>, <&m RGUI BKSL>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
