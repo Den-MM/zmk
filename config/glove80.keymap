@@ -151,6 +151,20 @@
             bindings = <&kp GRAVE>, <&kp TILDE>; //`~
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
+
+        c: c_tap_dance {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp C>, <&kp LC(C)>;  // First tap: C, Second tap: Ctrl+C
+        };
+
+        v: v_tap_dance {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&kp V>, <&kp LC(V)>;  // First tap: V, Second tap: Ctrl+V
+        };
     };
 
     macros {
@@ -204,7 +218,7 @@
         &kp EQUAL   &kp N1      &n2         &n3         &kp N4      &kp N5                                                                      &kp N6   &kp N7      &n8         &n9        &n0         &kp MINUS
         &kp ESC     &q          &kp W       &e          &kp R       &kp T                                                                       &kp Y    &kp U       &kp I       &kp O      &kp P       &fslh
         &kp TAB     &mt LGUI A  &mt LALT S  &mt LCTRL D &mt LSHFT F &kp G                                                                       &kp H    &mt RSHFT J &mt RCTRL K &mt RALT L &fslh       &kp SQT
-        &grave      &kp Z       &kp X       &kp C       &kp V       &kp B   &kp LPAR    &kp LBKT    &kp LBRC   &kp RBRC  &kp RBKT  &kp RPAR     &kp N    &kp M       &comma      &dot       &kp TILDE   &mo MAGIC
+        &grave      &kp Z       &kp X       &c       &v       &kp B   &kp LPAR    &kp LBKT    &kp LBRC   &kp RBRC  &kp RBKT  &kp RPAR     &kp N    &kp M       &comma      &dot       &kp TILDE   &mo MAGIC
         &kp PG_UP   &kp HOME    &kp LEFT    &kp LC(LEFT)&kp DOWN         &kp BSPC    &kp DEL     &layer_td  &none     &kp RET   &kp SPACE                &kp UP      &kp RC(RIGHT)&kp RIGHT &kp END     &kp PG_DN
     >;
         };
