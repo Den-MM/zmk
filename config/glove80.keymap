@@ -166,23 +166,25 @@
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
             bindings = <&fslh_bslsh &fslh_rgui>;
-            display-name = "FSLH-RGUI";
+            display-name = "FSLH";
         };
 
         fslh_bslsh: fslh_bslsh {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp FSLH>, <&kp BSLH>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        fslh_rgui: fslh_rgui {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <0>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
-            bindings = <&fslh_bslsh &rgui>;
+            bindings = <&kp FSLH>, <&kp RGUI>;
             display-name = "FSLH-RGUI";
         };
         
-        fslh_rgui: fslsh_rgui {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp RGUI>;
-        };
     };
 
     macros {
