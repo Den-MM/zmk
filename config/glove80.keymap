@@ -158,7 +158,18 @@
             bindings = <&kp V>, <&kp LC(V)>;  // First tap: V, Second tap: Ctrl+V
         };
 
+
+
         fslh: fslh_bslsh_rgui {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <0>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&fslh_bslsh &fslh_rgui>;
+            display-name = "FSLH-RGUI";
+        };
+
+        fslh_bslsh: fslh_bslsh {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <0>;
             flavor = "tap-preferred";
@@ -167,7 +178,7 @@
             display-name = "FSLH-RGUI";
         };
         
-        rgui: rgui_behavior {
+        fslh_rgui: fslsh_rgui {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp RGUI>;
