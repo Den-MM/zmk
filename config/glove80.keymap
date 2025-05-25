@@ -4,6 +4,7 @@
  * SPDX-License-Identifier: MIT
  */
 
+// todo: tap dance copy paste, flsh win key, 
 
  // default---------------------------------------------------------------------------------------------------------------------------------
             // |  F1   |  F2 |  F3 |  F4  |  F5  |                                                               |  F6   |  F7   |  F8  |   F9  |  F10 |
@@ -15,11 +16,11 @@
 
 // current---------------------------------------------------------------------------------------------------------------------------------
             // |  F1   |  F2 |  F3 |  F4  |  F5  |                                                             |  F6   |  F7   |  F8  |   F9  |  F10 |
-            // |  =+   |  1  |  2# |  3<  |  4   |  5   |                                               |  6   |   7   |   8>  |  9   |   0?  |  -_  |
+            // |  =+   |  1  |  2# |  3<  |  4   |  5   |                                               |  6   |   7   |   8>  |  9*  |   0?  |  -_  |
             // |  ESC  |  Q@ |  W  |  E€  |  R   |  T   |                                               |  Y   |   U   |   I   |  O   |   P   |      |
             // |  TAB  |  A  |  S  |  D   |  F   |  G   |                                               |  H   |   J   |   K   |  L   |  /\|  |  '"  |
-            // |   ~   |  Z  |  X  |  C   |  V   |  B   | (    | [    | {    | |  }   | ]    | )        |  N   |   M   |  ,;   |  .:  |   ´`  | MAGIC|
-            // | PGUP  | HOME| LEFT| LEFTC| DOWN |      | BSPC | DEL  | LAYER| |      | ENT  | SPACE|          |  UP   |RIGHTC | RIGHT| END   | PGDN |
+            // |   ` | |  Z  |  X  |  C   |  V   |  B   | (    | [    | {    | |  }   | ]    | )        |  N   |   M   |  ,;   |  .:  |   ~   | MAGIC|
+            // | PGUP  | HOME| LEFT| LEFTC| DOWN |      | BSPC | DEL  | LAYER| |      | ENT  | SPACE|          |  UP   |RIGHTC | RIGHT| END   | PGDN |  
 
 // layer---------------------------------------------------------------------------------------------------------------------------------
             // |       |     |     |      |      |                                                               |       |       |      |       |      |
@@ -29,6 +30,9 @@
             // |       |     |     |      |      |      |      |      |      | |      |      |      |     |      |       |       |      |       |      |
             // |       |     |     |      |      |      |      |      |      | |      |      |      |            |       |       |      |       |      |
 
+// SQT = '
+// GRAVE = ´
+// TILDE = ~
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
@@ -62,14 +66,91 @@
             bindings = <&kp>, <&kp>;
             display-name = "Mod-Tap";
         };
-        
-        n3: n3 {
-        compatible = "zmk,behavior-mod-morph";
-        #binding-cells = <0>;
-        bindings = <&kp N3>, <&kp GT>;
-        mods = <(MOD_LSFT|MOD_RSFT)>;
-};
-   
+
+        n0: n0_hash {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp N2>, <&kp QMARK>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        n2: n2_hash {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp N2>, <&kp HASH>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        n3: n3_lt {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp N3>, <&kp LT>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        n8: n8_gt {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp N8>, <&kp GT>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        n9: n9_star {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp N8>, <&kp ASTRK>; //*
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+
+        equal: equal_plus {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp EQUAL>, <&kp PLUS>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        q: q_at {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp Q>, <&kp AT>; // @
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        e: e_euro {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp E>, <&kp RA(N5)>; // €
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        fslh: fslh_bslsh {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp FSLH>, <&kp BSLH>; // /\
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+
+        comma: comma_semi {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp COMMA>, <&kp SEMI>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        dot: dot_colon {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp DOT>, <&kp COLON>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        grave: grave_tilde {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp GRAVE>, <&kp TILDE>; //`~
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
     };
 
     macros {
@@ -118,13 +199,13 @@
             // |   ~   |  Z  |  X  |  C   |  V   |  B   | (    | [    | {    | |  }   | ]    | )        |  N   |   M   |  ,;   |  .:  |   ´`  | MAGIC|
             // | PGUP  | HOME| LEFT| LEFTC| DOWN |      | BSPC | DEL  | LAYER| |      | ENT  | SPACE|          |  UP   |RIGHTC | RIGHT| END   | PGDN |
 
-  bindings = <
-    &kp F1      &kp F2      &kp F3      &kp F4      &kp F5                                                                                           &kp F6      &kp F7      &kp F8     &kp F9      &kp F10
-    &kp EQUAL   &kp N1      &kp N2      &n3      &kp N4      &kp N5                                                                      &kp N6   &kp N7      &kp N8      &kp N9     &kp N0      &kp MINUS
-    &kp ESC     &kp Q       &kp W       &kp E       &kp R       &kp T                                                                       &kp Y    &kp U       &kp I       &kp O      &kp P       &kp BSLH
-    &kp TAB     &mt LGUI A   &mt LALT S   &mt LCTRL D  &mt LSHFT F  &kp G                                                                      &kp H    &mt RSHFT J &mt RCTRL K  &mt RALT L   &kp BSLH    &kp SQT
-    &kp TILDE   &kp Z       &kp X       &kp C       &kp V       &kp B   &kp LPAR    &kp LBKT    &kp LBRC   &kp RBRC  &kp RBKT  &kp RPAR     &kp N    &kp M       &kp COMMA   &kp DOT    &kp GRAVE   &mo MAGIC
-    &kp PG_UP   &kp HOME    &kp LEFT    &kp LC(LEFT)&kp DOWN         &kp BSPC    &kp DEL     &layer_td  &none     &kp RET   &kp SPACE                &kp UP      &kp RC(RIGHT)&kp RIGHT &kp END     &kp PG_DN
+    bindings = <
+        &kp F1      &kp F2      &kp F3      &kp F4      &kp F5                                                                                           &kp F6      &kp F7      &kp F8     &kp F9      &kp F10
+        &kp EQUAL   &kp N1      &n2         &n3         &kp N4      &kp N5                                                                      &kp N6   &kp N7      &n8         &n9        &n0         &kp MINUS
+        &kp ESC     &q          &kp W       &e          &kp R       &kp T                                                                       &kp Y    &kp U       &kp I       &kp O      &kp P       &fslh
+        &kp TAB     &mt LGUI A  &mt LALT S  &mt LCTRL D &mt LSHFT F &kp G                                                                       &kp H    &mt RSHFT J &mt RCTRL K &mt RALT L &fslh       &kp SQT
+        &grave      &kp Z       &kp X       &kp C       &kp V       &kp B   &kp LPAR    &kp LBKT    &kp LBRC   &kp RBRC  &kp RBKT  &kp RPAR     &kp N    &kp M       &comma      &dot       &kp TILDE   &mo MAGIC
+        &kp PG_UP   &kp HOME    &kp LEFT    &kp LC(LEFT)&kp DOWN         &kp BSPC    &kp DEL     &layer_td  &none     &kp RET   &kp SPACE                &kp UP      &kp RC(RIGHT)&kp RIGHT &kp END     &kp PG_DN
     >;
         };
 
