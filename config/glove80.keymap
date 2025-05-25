@@ -179,7 +179,7 @@
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
-            bindings = <&kp FSLH &kp RGUI>;
+            bindings = <&mt RGUI FSLH>;
             display-name = "FSLH-RGUI";
         };
         
