@@ -161,10 +161,7 @@
         fslh_bslh: fslh_bslh {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <
-                &mt RGUI FSLH
-                &kp BSLH
-            >;
+            bindings = <&mt RGUI FSLH &kp BSLH>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
