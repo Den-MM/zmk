@@ -161,20 +161,15 @@
         fslh_bslh: fslh_bslh {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            label = "FSLH_BSLH_MORPH"; // Good practice to add a label
             bindings = <&kp FSLH>, <&kp BSLH>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         rgui_fslh_key: rgui_fslh_key {
             compatible = "zmk,behavior-hold-tap";
-            label = "RGUI_HOLD_FSLH_BSLH_TAP";
-            #binding-cells = <1>; // It will take ONE argument: the keycode for the hold action (&kp)
-            flavor = "tap-preferred"; // Or "hold-preferred", "balanced"
-            tapping-term-ms = <200>;  // Adjust as needed
-
-            // Hold action: a key press, which will use the argument passed to &rgui_fslh_key
-            // Tap action: your fslh_bslh behavior, which takes no arguments itself
+            #binding-cells = <1>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
             bindings = <&kp>, <&fslh_bslh>;
         };
         
