@@ -158,7 +158,7 @@
             bindings = <&kp V>, <&kp LC(V)>;  // First tap: V, Second tap: Ctrl+V
         };
 
-        s: v_tap_dance {
+        s: s_tap_dance {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
@@ -172,7 +172,7 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <
-                &mt RGUI FSLH
+                &mt RGUI FSLH>,<
                 &kp BSLH
             >;
             mods = <(MOD_LSFT|MOD_RSFT)>;
