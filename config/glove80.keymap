@@ -160,11 +160,17 @@
 
         fslh: fslh_bslh_rgui {
             compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
+            #binding-cells = <0>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
             bindings = <&fslh_rgui &fslh_bslh>;
-            display-name = "FSLH";
+        };
+
+        fslh_rgui: fslh_rgui {
+            compatible = "zmk,behavior-key-press";
+            #binding-cells = <0>;
+            bindings = <&kp RGUI>;
+            display-name = "FSLH-RGUI";
         };
 
         fslh_bslh: fslh_bslh {
@@ -172,13 +178,6 @@
             #binding-cells = <0>;
             bindings = <&kp FSLH>, <&kp BSLH>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        fslh_rgui: fslh_rgui {
-            compatible = "zmk,behavior-key-press";
-            #binding-cells = <1>;
-            key-code = <RGUI>;
-            display-name = "FSLH-RGUI";
         };
         
     };
