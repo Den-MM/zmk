@@ -163,7 +163,7 @@
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
-            bindings = <&fslh_bslsh &fslh_rgui>;
+            bindings = <&fslh_rgui &fslh_bslsh>;
             display-name = "FSLH";
         };
 
@@ -175,7 +175,7 @@
         };
 
         fslh_rgui: fslh_rgui {
-            compatible = "zmk,behavior-mod-morph";
+            compatible = "zmk,behavior-key-press";
             #binding-cells = <0>;
             bindings = <&kp RGUI>;
             display-name = "FSLH-RGUI";
