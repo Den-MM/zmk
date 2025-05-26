@@ -160,10 +160,10 @@
 
         fslh: fslh_bslh_rgui {
             compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <0>;
+            #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
-            bindings = <&fslh_rgui &fslh_bslh>;
+            bindings = <&kp &kp;
         };
 
         fslh_rgui: fslh_rgui {
@@ -183,6 +183,13 @@
     };
 
     macros {
+      //  fslh: fslh_macro {
+        //    compatible = "zmk,behavior-macro";
+          //  label = "FSLH";
+          //  #binding-cells = <0>
+           // bindings = <&ht_tp200_fslh_config &fslh_bslh_morph &fslh_rgui_press>;
+//        };
+
         bt_0: bt_profile_macro_0 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -232,7 +239,7 @@
         &kp F1      &kp F2      &kp F3      &kp F4      &kp F5                                                                                           &kp F6      &kp F7      &kp F8     &kp F9      &kp F10
         &kp EQUAL   &kp N1      &n2         &n3         &kp N4      &kp N5                                                                      &kp N6   &kp N7      &n8         &n9        &n0         &kp MINUS
         &kp ESC     &q          &kp W       &e          &kp R       &kp T                                                                       &kp Y    &kp U       &kp I       &kp O      &kp P       &kp N1
-        &kp TAB     &mt LGUI A  &mt LALT S  &mt LCTRL D &mt LSHFT F &kp G                                                                       &kp H    &mt RSHFT J &mt RCTRL K &mt RALT L &fslh       &kp SQT
+        &kp TAB     &mt LGUI A  &mt LALT S  &mt LCTRL D &mt LSHFT F &kp G                                                                       &kp H    &mt RSHFT J &mt RCTRL K &mt RALT L &fslh &fslh_rgui &fslh_bslh       &kp SQT
         &grave      &kp Z       &kp X       &c          &v          &kp B   &kp LPAR    &kp LBKT    &kp LBRC   &kp RBRC  &kp RBKT  &kp RPAR     &kp N    &kp M       &comma      &dot       &kp TILDE   &mo MAGIC
         &kp PG_UP   &kp HOME    &kp LEFT    &kp LC(LEFT)&kp DOWN         &kp BSPC    &kp DEL     &layer_td  &none     &kp RET   &kp SPACE                &kp UP      &kp RC(RIGHT)&kp RIGHT &kp END     &kp PG_DN
     >;
