@@ -158,26 +158,24 @@
             bindings = <&kp V>, <&kp LC(V)>;  // First tap: V, Second tap: Ctrl+V
         };
 
-        fslh: fslh_bslh_rgui {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-            bindings = <&kp &kp>;
-        };
-
-        fslh_rgui: fslh_rgui {
-            compatible = "zmk,behavior-key-press";
-            #binding-cells = <0>;
-            bindings = <&kp RGUI>;
-            display-name = "FSLH-RGUI";
-        };
-
         fslh_bslh: fslh_bslh {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
+            label = "FSLH_BSLH_MORPH"; // Good practice to add a label
             bindings = <&kp FSLH>, <&kp BSLH>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        rgui_fslh_key: rgui_fslh_key {
+            compatible = "zmk,behavior-hold-tap";
+            label = "RGUI_HOLD_FSLH_BSLH_TAP";
+            #binding-cells = <1>; // It will take ONE argument: the keycode for the hold action (&kp)
+            flavor = "tap-preferred"; // Or "hold-preferred", "balanced"
+            tapping-term-ms = <200>;  // Adjust as needed
+
+            // Hold action: a key press, which will use the argument passed to &rgui_fslh_key
+            // Tap action: your fslh_bslh behavior, which takes no arguments itself
+            bindings = <&kp>, <&fslh_bslh>;
         };
         
     };
@@ -239,7 +237,7 @@
         &kp F1      &kp F2      &kp F3      &kp F4      &kp F5                                                                                           &kp F6      &kp F7      &kp F8     &kp F9      &kp F10
         &kp EQUAL   &kp N1      &n2         &n3         &kp N4      &kp N5                                                                      &kp N6   &kp N7      &n8         &n9        &n0         &kp MINUS
         &kp ESC     &q          &kp W       &e          &kp R       &kp T                                                                       &kp Y    &kp U       &kp I       &kp O      &kp P       &kp N1
-        &kp TAB     &mt LGUI A  &mt LALT S  &mt LCTRL D &mt LSHFT F &kp G                                                                       &kp H    &mt RSHFT J &mt RCTRL K &mt RALT L &fslh       &kp SQT
+        &kp TAB     &mt LGUI A  &mt LALT S  &mt LCTRL D &mt LSHFT F &kp G                                                                       &kp H    &mt RSHFT J &mt RCTRL K &mt RALT L &rgui_fslh_key RGUI       &kp SQT
         &grave      &kp Z       &kp X       &c          &v          &kp B   &kp LPAR    &kp LBKT    &kp LBRC   &kp RBRC  &kp RBKT  &kp RPAR     &kp N    &kp M       &comma      &dot       &kp TILDE   &mo MAGIC
         &kp PG_UP   &kp HOME    &kp LEFT    &kp LC(LEFT)&kp DOWN         &kp BSPC    &kp DEL     &layer_td  &none     &kp RET   &kp SPACE                &kp UP      &kp RC(RIGHT)&kp RIGHT &kp END     &kp PG_DN
     >;
