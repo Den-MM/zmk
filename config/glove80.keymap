@@ -172,7 +172,7 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <
-                &mt RGUI FSLH>,<
+                &mt RGUI FSLH,
                 &kp BSLH
             >;
             mods = <(MOD_LSFT|MOD_RSFT)>;
