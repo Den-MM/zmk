@@ -178,7 +178,7 @@
             compatible = "zmk,behavior-mod-morph";
             label = "CLICK_SHIFT";
             #binding-cells = <0>;
-            bindings = <&mkp LCLK>, <&mkp RCLK>;
+            bindings = <&mkp LCLK &mkp RCLK>;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
         
