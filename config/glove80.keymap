@@ -168,13 +168,13 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <
-                &mt RGUI FSLH,
+                &mt RGUI FSLH
                 &kp BSLH
             >;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
        
-       click: click_shift {
+       click: click_rclick {
             compatible = "zmk,behavior-mod-morph";
             label = "CLICK_SHIFT";
             #binding-cells = <0>;
