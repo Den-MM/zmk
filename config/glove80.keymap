@@ -33,6 +33,10 @@
 // SQT = '
 // GRAVE = ´
 // TILDE = ~
+// PIPE = |
+// @ = AT
+// € = RA(N5)
+// Ö,Ü,Ä = RA(Y),RA(P),RA(Q)
 
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
@@ -101,25 +105,10 @@
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
-
         equal: equal_plus {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp EQUAL>, <&kp PLUS>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        q: q_at {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp Q>, <&kp AT>; // @
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        e: e_euro {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp E>, <&kp RA(N5)>; // €
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
@@ -140,7 +129,7 @@
         grave: grave_tilde {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp GRAVE>, <&kp TILDE>; //`~
+            bindings = <&kp GRAVE>, <&kp PIPE>; //`|
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
@@ -155,7 +144,7 @@
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&kp V>, <&kp LC(V)>;  // First tap: V, Second tap: Ctrl+V
+            bindings = <&kp V>, <&kp LC(V)>;
         };
 
         s: s_tap_dance {
@@ -165,7 +154,14 @@
             bindings = <
                 &mt LALT S
                 &kp LC(S)
-            >;  // First tap: V, Second tap: Ctrl+V
+            >;
+        };
+
+        tilde: tilde {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp TILDE>, <&kp AT>; //~ @
+            mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
         fslh_bslh: fslh_bslh {
@@ -177,18 +173,18 @@
             >;
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
-
        
+       click: click_shift {
+            compatible = "zmk,behavior-mod-morph";
+            label = "CLICK_SHIFT";
+            #binding-cells = <0>;
+            bindings = <&mkp LCLK>, <&mkp RCLK>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
         
     };
 
     macros {
-      //  fslh: fslh_macro {
-        //    compatible = "zmk,behavior-macro";
-          //  label = "FSLH";
-          //  #binding-cells = <0>
-           // bindings = <&ht_tp200_fslh_config &fslh_bslh_morph &fslh_rgui_press>;
-//        };
 
         bt_0: bt_profile_macro_0 {
             compatible = "zmk,behavior-macro";
@@ -229,12 +225,12 @@
         default_layer {
 
 bindings = <
-    &kp F1      &kp F2      &kp F3      &kp F4      &kp F5                                                                                           &kp F6      &kp F7      &kp F8     &kp F9      &kp F10
-    &kp EQUAL   &kp N1      &n2         &n3         &kp N4      &kp N5                                                                      &kp N6   &kp N7      &n8         &n9        &n0         &kp MINUS
-    &kp ESC     &q          &kp W       &e          &kp R       &kp T                                                                       &kp Y    &kp U       &kp I       &kp O      &kp P       &kp N1
-    &kp TAB     &mt LGUI A  &s  &mt LCTRL D &mt LSHFT F &kp G                                                                       &kp H    &mt RSHFT J &mt RCTRL K &mt RALT L &fslh_bslh      &kp SQT
-    &grave      &kp Z       &kp X       &c          &v          &kp B   &kp LPAR    &kp LBKT    &kp LBRC   &kp RBRC  &kp RBKT  &kp RPAR     &kp N    &kp M       &comma      &dot       &kp TILDE   &mo MAGIC
-    &kp PG_UP   &kp HOME    &kp LEFT    &kp LC(LEFT)&kp DOWN         &kp BSPC    &kp DEL     &layer_td  &none     &kp RET   &kp SPACE                &kp UP      &kp RC(RIGHT)&kp RIGHT &kp END     &kp PG_DN
+&kp F1      &kp F2      &kp F3      &kp F4      &kp F5                                                                                           &kp F6      &kp F7      &kp F8     &kp F9      &kp F10
+&kp EQUAL   &kp N1      &n2         &n3         &kp N4      &kp N5                                                                      &kp N6   &kp N7      &n8         &n9        &n0         &kp MINUS
+&kp ESC     &kp Q       &kp W       &kp E       &kp R       &kp T                                                                       &kp Y    &kp U       &kp I       &kp O      &kp P       &grave
+&kp TAB     &mt LGUI A  &s          &mt LCTRL D &mt LSHFT F &kp G                                                                       &kp H    &mt RSHFT J &mt RCTRL K &mt RALT L &fslh_bslh  &kp SQT
+&kp HOME    &kp Z       &kp X       &c          &v          &kp B   &kp LPAR    &kp LBKT    &kp LBRC   &kp RBRC  &kp RBKT  &kp RPAR     &kp N    &kp M       &comma      &dot       &kp END     &tilde
+&mo MAGIC   &kp LEFT    &kp LC(LEFT)&kp UP      &kp PG_UP           &kp BSPC    &kp DEL     &click     &layer_td &kp RET   &kp SPACE             &kp PG_DN   &kp DOWN    &kp RC(RIGHT)&kp RIGHT &kp 
 >;
         };
 
