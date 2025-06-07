@@ -217,13 +217,13 @@
     &kp F1      &kp F2      &kp F3      &kp F4      &kp F5                                                                                           &kp F6      &kp F7      &kp F8     &kp F9      &kp F10
     &kp EQUAL   &kp N1      &n2         &n3         &kp N4      &kp N5                                                                      &kp N6   &kp N7      &n8         &n9        &n0         &kp MINUS
     &kp ESC     &kp Q       &kp W       &kp E       &kp R       &kp T                                                                       &kp Y    &kp U       &kp I       &kp O      &kp P       &grave
-    &kp TAB     &mt LGUI A  &kp S          &mt LCTRL D &mt LSHFT F &kp G                                                                       &kp H    &mt RSHFT J &mt RCTRL K &mt RALT L &fslh_bslh  &kp SQT
+    &kp TAB     &mt LGUI A  &mt LALT S  &mt LCTRL D &mt LSHFT F &kp G                                                                       &kp H    &mt RSHFT J &mt RCTRL K &mt RALT L &fslh_bslh  &kp SQT
     &kp HOME    &kp Z       &kp X       &c          &v          &kp B   &kp LPAR    &kp LBKT    &kp LBRC   &kp RBRC  &kp RBKT  &kp RPAR     &kp N    &kp M       &comma      &dot       &kp END     &tilde
     &mo MAGIC   &kp LEFT    &kp LC(LEFT)&kp UP      &kp PG_UP           &kp BSPC    &kp DEL     &click     &layer_td &kp RET   &kp SPACE             &kp PG_DN   &kp DOWN    &kp RC(RIGHT)&kp RIGHT &kp 1
     >;
             };
 
-            // default_lower_layer-----------------------------------------------------------------------------------------------------------------------
+            // default_lower_layer----------------------------------------------------------------------------------------------------------------------
                 // | BRI_DN| BRI_UP| PREV | NEXT | PLAY |                                                               | MUTE  | VOL_DN| VOL_UP|  none | PAUSE |
                 // | trans |  none |  none|  none|  none| HOME |                                                 | LPAR | KPNUM | KP_EQ | KP_/  | KP_*  | PSCRN |
                 // | trans |  none |  none|  UP  |  none|  END |                                                 | RPAR | KP_7  | KP_8  | KP_9  | KP_-  | SLCK  |
