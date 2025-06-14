@@ -170,13 +170,6 @@
                 mods = <(MOD_LSFT|MOD_RSFT)>;
             };
         
-            central_dot: central_dot {
-                compatible = "zmk,behavior-mod-morph";
-                #binding-cells = <0>;
-                bindings = <&kp DOT>, <&macro_press &macro_tap &kp U00B7 &macro_release>;
-                mods = <(MOD_LSFT|MOD_RSFT)>;
-            };
-        
         click: click_rclick {
                 compatible = "zmk,behavior-mod-morph";
                 label = "CLICK_SHIFT";
@@ -233,7 +226,7 @@
     &kp ESC     &kp Q       &kp W       &kp E       &kp R       &kp T                                                                       &kp Y    &kp U       &kp I       &kp O      &kp P       &equal
     &kp TAB     &mt LGUI A  &mt LALT S  &mt LCTRL D &mt LSHFT F &kp G                                                                       &kp H    &mt RSHFT J &mt RCTRL K &mt RALT L &fslh_bslh  &kp SQT
     &kp HOME    &kp Z       &x          &c          &v          &kp B   &kp LPAR    &kp LBKT    &kp LBRC   &kp RBRC  &kp RBKT  &kp RPAR     &kp N    &kp M       &comma      &dot       &kp END     &tilde
-    &mo MAGIC   &kp LEFT    &kp LC(LEFT)&kp UP      &kp PG_UP           &kp BSPC    &kp DEL     &click     &layer_td &kp RET   &kp SPACE             &kp DOWN    &kp RC(RIGHT)&kp RIGHT &kp PG_DN   &central_dot
+    &mo MAGIC   &kp LEFT    &kp LC(LEFT)&kp UP      &kp PG_UP           &kp BSPC    &kp DEL     &click     &layer_td &kp RET   &kp SPACE             &kp DOWN    &kp RC(RIGHT)&kp RIGHT &kp PG_DN   &kp 1
     >;
             };
 
