@@ -179,10 +179,10 @@
 
             
             left: left_tap_dance {
-                compatible = "zmk,behavior-mod-morph";
+                compatible = "zmk,behavior-tap-dance";
                 #binding-cells = <0>;
+                tapping-term-ms = <200>;
                 bindings = <&kp LEFT>, <&kp LALT(LEFT)>;
-                mods = <(MOD_LSFT|MOD_RSFT)>;
             };
             
         };
