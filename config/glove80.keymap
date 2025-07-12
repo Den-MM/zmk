@@ -170,12 +170,20 @@
                 mods = <(MOD_LSFT|MOD_RSFT)>;
             };
         
-        click: click_rclick {
+            click: click_rclick {
                 compatible = "zmk,behavior-mod-morph";
                 label = "CLICK_SHIFT";
                 #binding-cells = <0>;
                 bindings = <&mkp LCLK>,<&mkp RCLK>;
                 mods = <(MOD_LSFT|MOD_RSFT)>;
+            };
+
+            
+            left: left_tap_dance {
+                compatible = "zmk,behavior-tap-dance";
+                #binding-cells = <0>;
+                tapping-term-ms = <200>;
+                bindings = <&kp LEFT>, <&kp LALT(LEFT)>;
             };
             
         };
@@ -226,7 +234,7 @@ bindings = <
     &kp ESC     &kp Q       &kp W       &kp E       &kp R       &kp T                                                                       &kp Y    &kp U       &kp I       &kp O      &kp P       &equal
     &kp TAB     &mt LGUI A  &mt LALT S  &mt LCTRL D &mt LSHFT F &kp G                                                                       &kp H    &mt RSHFT J &mt RCTRL K &mt RALT L &fslh_bslh  &kp SQT
     &kp 1       &kp Z       &x          &c          &v          &kp B   &kp LPAR    &kp LBKT    &kp LBRC   &kp RBRC  &kp RBKT  &kp RPAR     &kp N    &kp M       &comma      &dot       &kp MINUS   &kp 1
-    &mo MAGIC   &kp HOME    &kp LC(LEFT)&kp LEFT    &kp UP              &kp BSPC    &kp DEL     &click     &layer_td &kp RET   &kp SPACE             &kp DOWN    &kp RIGHT   &kp RC(RIGHT)&kp END   &kp 1
+    &mo MAGIC   &kp HOME    &left    &kp LC(LEFT)&kp UP              &kp BSPC    &kp DEL     &click     &layer_td &kp RET   &kp SPACE             &kp DOWN    &kp RC(RIGHT)&kp RIGHT &kp END     &kp 1
 >;
             };
 
@@ -240,12 +248,12 @@ bindings = <
 
 lower_layer {
 bindings = <
-    &kp C_BRI_DN        &kp C_BRI_UP        &kp C_PREV      &kp C_NEXT      &kp C_PP                                &kp C_MUTE      &kp C_VOL_DN    &kp C_VOL_UP    &none       &kp PAUSE_BREAK
-    &trans            &none               &none           &none           &none           &kp HOME                                                                              &kp LPAR     &kp KP_NUM   &kp KP_EQUAL &kp KP_DIVIDE &kp KP_MULTIPLY &kp PSCRN
-    &trans            &none               &none           &kp UP          &none           &kp END                                                                               &kp RPAR     &kp KP_N7    &kp KP_N8    &kp KP_N9     &kp KP_MINUS    &kp RA(Y)
-    &trans            &none               &kp LEFT        &kp DOWN        &kp RIGHT       &kp PG_UP                                                                             &kp PRCNT    &kp KP_N4    &kp KP_N5    &kp KP_N6     &kp RA(P)       &kp RA(Q)
-    &trans            &kp K_CMENU         &none           &kp F11         &kp F12         &kp PG_DN       &trans      &trans      &to DEFAULT &trans      &trans      &trans    &kp COMMA    &kp KP_N1    &kp KP_N2    &kp KP_N3     &kp KP_ENTER    &trans
-    &trans            &kp CAPS            &kp INS         &kp F11         &kp F12                         &trans      &trans      &trans      &trans      &trans      &trans                 &kp KP_N0    &kp KP_N0    &kp KP_DOT    &kp KP_ENTER    &trans
+    &kp C_BRI_DN    &kp C_BRI_UP    &kp C_PREV      &kp C_NEXT      &kp C_PP                                &kp C_MUTE      &kp C_VOL_DN    &kp C_VOL_UP    &none       &kp PAUSE_BREAK
+    &trans  &none   &none           &none           &none           &kp HOME                                                                              &kp LPAR     &kp KP_NUM   &kp KP_EQUAL &kp KP_DIVIDE &kp KP_MULTIPLY &kp PSCRN
+    &trans  &none   &none           &kp UP          &none           &kp END                                                                               &kp RPAR     &kp KP_N7    &kp KP_N8    &kp KP_N9     &kp KP_MINUS    &kp RA(Y)
+    &trans  &none   &kp LEFT        &kp DOWN        &kp RIGHT       &kp PG_UP                                                                             &kp PRCNT    &kp KP_N4    &kp KP_N5    &kp KP_N6     &kp RA(P)       &kp RA(Q)
+    &trans  &kp K_CMENU         &none           &kp F11         &kp F12         &kp PG_DN       &trans      &trans      &to DEFAULT &trans      &trans      &trans    &kp COMMA    &kp KP_N1    &kp KP_N2    &kp KP_N3     &kp KP_ENTER    &trans
+    &trans  &kp CAPS    &kp INS &kp F11 &kp F12                         &trans      &trans      &trans      &trans      &trans      &trans                 &kp KP_N0    &kp KP_N0    &kp KP_DOT    &kp KP_ENTER    &trans
 >;
 };
 
