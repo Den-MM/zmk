@@ -174,7 +174,7 @@
                 compatible = "zmk,behavior-mod-morph";
                 #binding-cells = <0>;
                 bindings = <&mkp LCLK>,<&mkp RCLK>;
-                mods = <(MOD_LSFT|MOD_RSFT)>;
+                mods = <(MOD_LGUI|MOD_RGUI)>;
             };
 
             
@@ -182,7 +182,7 @@
                 compatible = "zmk,behavior-tap-dance";
                 #binding-cells = <0>;
                 tapping-term-ms = <200>;
-                bindings = <&kp LEFT>, <&kp LALT(LEFT)>;
+                bindings = <&kp LEFT>, <&kp LA(LEFT)>;
             };
             
         };
