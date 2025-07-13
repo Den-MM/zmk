@@ -171,19 +171,13 @@
             };
         
             click: click_rclick {
-                compatible = "zmk,behavior-mod-morph";
-                #binding-cells = <0>;
-                bindings = <&mkp LCLK>,<&mkp RCLK>;
-                mods = <(MOD_LGUI|MOD_RGUI)>;
-            };
-
-            
-            left: left_tap_dance {
                 compatible = "zmk,behavior-tap-dance";
                 #binding-cells = <0>;
                 tapping-term-ms = <200>;
-                bindings = <&kp LEFT>, <&kp LA(LEFT)>;
+                bindings = <&mkp LCLK>,<&mkp RCLK>;
+                compatible = "zmk,behavior-mod-morph";
             };
+
             
         };
 
