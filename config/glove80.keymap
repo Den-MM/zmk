@@ -170,19 +170,52 @@
                 mods = <(MOD_LSFT|MOD_RSFT)>;
             };
         
-            click: click_rclick {
+            click2: click_ctrl {
                 compatible = "zmk,behavior-mod-morph";
                 #binding-cells = <0>;
-                bindings = <&mkp LCLK>,<&mkp RCLK>;
-                mods = <(MOD_LGUI|MOD_RGUI)>;
+                bindings = <&kp LCLK>, <&kp RCLK>;
+                mods = <(MOD_LCTL|MOD_RCTL)>;
+            };
+        
+            click: click_alt {
+                compatible = "zmk,behavior-mod-morph";
+                #binding-cells = <0>;
+                bindings = <&kp LCLK>, <&click2>;
+                mods = <(MOD_LALT|MOD_RALT)>;
+            };            
+
+            lpar2: lpar_ctrl {
+                compatible = "zmk,behavior-mod-morph";
+                #binding-cells = <0>;
+                bindings = <&kp LBKT>, <&kp LBRC>;
+                mods = <(MOD_LCTL|MOD_RCTL)>;
+            };
+            lpar: lpar_shift {
+                compatible = "zmk,behavior-mod-morph";
+                #binding-cells = <0>;
+                bindings = <&kp LPAR>, <&lpar2>;
+                mods = <(MOD_LSFT|MOD_RSFT)>;
             };
 
-            
-            left: left_tap_dance {
-                compatible = "zmk,behavior-tap-dance";
+            rpar2: rpar_ctrl {
+                compatible = "zmk,behavior-mod-morph";
                 #binding-cells = <0>;
-                tapping-term-ms = <200>;
-                bindings = <&kp LEFT>, <&kp LA(LEFT)>;
+                bindings = <&kp RBKT>, <&kp RBRC>;
+                mods = <(MOD_LCTL|MOD_RCTL)>;
+            };
+
+            rpar: rpar_shift {
+                compatible = "zmk,behavior-mod-morph";
+                #binding-cells = <0>;
+                bindings = <&kp RBKT>, <&rpar2>;
+                mods = <(MOD_LSFT|MOD_RSFT)>;
+            };
+
+            nav: back_forward {
+                compatible = "zmk,behavior-mod-morph";
+                #binding-cells = <0>;
+                bindings = <&kp LALT(LEFT)>, <&kp LALT(RIGHT)>;
+                mods = <(MOD_LSFT|MOD_RSFT)>;
             };
             
         };
@@ -232,7 +265,7 @@ bindings = <
     &grave      &kp N1      &n2         &n3         &kp N4      &kp N5                                                                      &kp N6   &kp N7      &n8         &n9        &n0         &tilde
     &kp ESC     &kp Q       &kp W       &kp E       &kp R       &kp T                                                                       &kp Y    &kp U       &kp I       &kp O      &kp P       &equal
     &kp TAB     &mt LGUI A  &mt LALT S  &mt LCTRL D &mt LSHFT F &kp G                                                                       &kp H    &mt RSHFT J &mt RCTRL K &mt RALT L &fslh_bslh  &kp SQT
-    &kp 1       &kp Z       &x          &c          &v          &kp B   &kp LPAR    &kp LBKT    &kp LBRC   &kp RBRC  &kp RBKT  &kp RPAR     &kp N    &kp M       &comma      &dot       &kp MINUS   &kp 1
+    &kp 1       &kp Z       &x          &c          &v          &kp B   &lpar    &nav        &kp LBRC   &kp RBRC  &kp RBKT  &rpar     &kp N    &kp M       &comma      &dot       &kp MINUS   &kp 1
     &mo MAGIC   &kp HOME    &left    &kp LC(LEFT)&kp UP              &kp BSPC    &kp DEL     &click     &layer_td &kp RET   &kp SPACE             &kp DOWN    &kp RC(RIGHT)&kp RIGHT &kp END     &kp 1
 >;
             };
