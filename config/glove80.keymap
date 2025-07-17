@@ -207,7 +207,7 @@
             rpar: rpar_shift {
                 compatible = "zmk,behavior-mod-morph";
                 #binding-cells = <0>;
-                bindings = <&kp RBKT>, <&rpar2>;
+                bindings = <&kp RPAR>, <&rpar2>;
                 mods = <(MOD_LSFT|MOD_RSFT)>;
             };
             
