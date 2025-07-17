@@ -214,9 +214,10 @@
             nav: navigation {
                 compatible = "zmk,behavior-mod-morph";
                 #binding-cells = <0>;
-                bindings = <&kp LBKT>, <&kp RBKT>;
-                mods = <(MOD_LALT|MOD_RALT)>;
+                bindings = <&kp LALT(LEFT)>, <&kp LALT(RIGHT)>;
+                mods = <(MOD_LSFT|MOD_RSFT)>;
             };
+
             
         };
 
