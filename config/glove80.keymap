@@ -170,14 +170,19 @@
                 mods = <(MOD_LSFT|MOD_RSFT)>;
             };
         
-            click: click_rclick {
+            click2: click_ctrl {
                 compatible = "zmk,behavior-mod-morph";
                 #binding-cells = <0>;
-                bindings = <&mkp LCLK>,<&mkp RCLK>;
-                mods = <(MOD_LGUI|MOD_RGUI)>;
+                bindings = <&kp LCLK>, <&kp RCLK>;
+                mods = <(MOD_LCTL|MOD_RCTL)>;
             };
-
-            
+        
+            click: click_alt {
+                compatible = "zmk,behavior-mod-morph";
+                #binding-cells = <0>;
+                bindings = <&kp LCLK>, <&click2>;
+                mods = <(MOD_LALT|MOD_RALT)>;
+            };            
         };
 
         macros {
