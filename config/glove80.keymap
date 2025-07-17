@@ -170,12 +170,18 @@
                 mods = <(MOD_LSFT|MOD_RSFT)>;
             };
         
-            click: click_rclick {
-                compatible = "zmk,behavior-tap-dance";
-                #binding-cells = <0>;
-                tapping-term-ms = <200>;
-                bindings = <&mkp LCLK>,<&mkp RCLK>;
+            ctrl_click: ctrl_click {
                 compatible = "zmk,behavior-mod-morph";
+                #binding-cells = <0>;
+                bindings = <&kp LCLK>, <&kp RCLK>;
+                mods = <(MOD_LCTL|MOD_RCTL)>;
+            };
+        
+            click: click_rclick {
+                compatible = "zmk,behavior-mod-morph";
+                #binding-cells = <0>;
+                bindings = <&kp LCLK>, <&ctrl_click>;
+                mods = <(MOD_LALT|MOD_RALT)>;
             };
 
             
