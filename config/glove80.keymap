@@ -90,14 +90,14 @@
             n3: n3_lt {
                 compatible = "zmk,behavior-mod-morph";
                 #binding-cells = <0>;
-                bindings = <&kp N3>, <&kp LT>;
+                bindings = <&kp N3>, <&kp GT>;
                 mods = <(MOD_LSFT|MOD_RSFT)>;
             };
 
             n8: n8_gt {
                 compatible = "zmk,behavior-mod-morph";
                 #binding-cells = <0>;
-                bindings = <&kp N8>, <&kp GT>;
+                bindings = <&kp N8>, <&kp LT>;
                 mods = <(MOD_LSFT|MOD_RSFT)>;
             };
             n9: n9_star {
