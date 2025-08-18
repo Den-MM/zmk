@@ -231,10 +231,36 @@
                 bindings = <&kp PGDN>, <&kp PGUP>;
                 mods = <(MOD_LSFT|MOD_RSFT)>;
             };
+
+            ctrl_up: ctrl_up_morph {
+                compatible = "zmk,behavior-mod-morph";
+                #binding-cells = <0>;
+                bindings = <&kp UP>, <&up_3_lines>;
+                mods = <(MOD_LCTL|MOD_RCTL)>;
+            };
+
+            ctrl_down: ctrl_down_morph {
+                compatible = "zmk,behavior-mod-morph";
+                #binding-cells = <0>;
+                bindings = <&kp DOWN>, <&down_3_lines>;
+                mods = <(MOD_LCTL|MOD_RCTL)>;
+            };
             
         };
 
         macros {
+
+            up_3_lines: macro_up_3_lines {
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings = <&kp UP &kp UP &kp UP>;
+            };
+
+            down_3_lines: macro_down_3_lines {
+                compatible = "zmk,behavior-macro";
+                #binding-cells = <0>;
+                bindings = <&kp DOWN &kp DOWN &kp DOWN>;
+            };
 
             bt_0: bt_profile_macro_0 {
                 compatible = "zmk,behavior-macro";
@@ -280,7 +306,7 @@ bindings = <
     &kp ESC     &kp Q       &kp W       &kp E       &kp R       &kp T                                                               &kp Y    &kp U       &kp I       &kp O      &kp P       &equal
     &kp TAB     &mt LGUI A  &mt LALT S  &mt LCTRL D &mt LSHFT F &kp G                                                               &kp H    &mt RSHFT J &mt RCTRL K &mt RALT L &sqt        &fslh_bslh
     &kp CAPS    &kp Z       &x          &c          &v          &kp B   &lpar     &nav      &pg    &none     &none    &rpar         &kp N    &kp M       &comma      &dot       &kp MINUS   &none
-    &mo MAGIC   &kp HOME    &kp LEFT    &kp LC(LEFT)&kp UP              &kp BSPC  &kp DEL   &click &layer_td &kp RET  &kp SPACE              &kp DOWN    &kp RC(RIGHT)&kp RIGHT &kp END     &none
+    &mo MAGIC   &kp HOME    &kp LEFT    &kp LC(LEFT)&ctrl_up            &kp BSPC  &kp DEL   &click &layer_td &kp RET  &kp SPACE              &ctrl_down  &kp RC(RIGHT)&kp RIGHT &kp END     &none
 >; 
             };
 
