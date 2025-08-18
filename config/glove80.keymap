@@ -237,12 +237,14 @@
                 compatible = "zmk,behavior-key-repeat";
                 #binding-cells = <0>;
                 bindings = <&ctrl_up_5>;
+                usage-page = <0x07>;
             };
 
             ctrl_down: ctrl_down_key_repeat {
                 compatible = "zmk,behavior-key-repeat";
                 #binding-cells = <0>;
                 bindings = <&ctrl_down_5>;
+                usage-page = <0x07>;
             };
 
             ctrl_up_5: ctrl_up_5 {
