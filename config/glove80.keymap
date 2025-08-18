@@ -234,31 +234,19 @@
 
 
             ctrl_up: ctrl_up_key_repeat {
-                compatible = "zmk,behavior-key-repeat";
-                #binding-cells = <0>;
-                bindings = <&ctrl_up_5>;
-                usage-page = <0x07>;
+                compatible = "zmk,behavior-macro-one-param";
+                #binding-cells = <1>;
+                bindings = <&kp>;
+                param-wait-ms = <0>;
+                param-tap-ms = <0>;
             };
 
             ctrl_down: ctrl_down_key_repeat {
-                compatible = "zmk,behavior-key-repeat";
-                #binding-cells = <0>;
-                bindings = <&ctrl_down_5>;
-                usage-page = <0x07>;
-            };
-
-            ctrl_up_5: ctrl_up_5 {
-                compatible = "zmk,behavior-mod-morph";
-                #binding-cells = <0>;
-                bindings = <&kp UP>, <&up_3>;
-                mods = <(MOD_LCTL|MOD_RCTL)>;
-            };
-
-            ctrl_down_5: ctrl_down_5 {
-                compatible = "zmk,behavior-mod-morph";
-                #binding-cells = <0>;
-                bindings = <&kp DOWN>, <&down_3>;
-                mods = <(MOD_LCTL|MOD_RCTL)>;
+                compatible = "zmk,behavior-macro-one-param";
+                #binding-cells = <1>;
+                bindings = <&kp>;
+                param-wait-ms = <0>;
+                param-tap-ms = <0>;
             };
             
         };
