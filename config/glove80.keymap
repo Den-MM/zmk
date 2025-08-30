@@ -80,10 +80,10 @@
                 mods = <(MOD_LSFT|MOD_RSFT)>;
             };
 
-            n2: n2_hash {
+            n2: n2_at {
                 compatible = "zmk,behavior-mod-morph";
                 #binding-cells = <0>;
-                bindings = <&kp N2>, <&kp HASH>;
+                bindings = <&kp N2>, <&kp AT>;
                 mods = <(MOD_LSFT|MOD_RSFT)>;
             };
 
@@ -91,6 +91,13 @@
                 compatible = "zmk,behavior-mod-morph";
                 #binding-cells = <0>;
                 bindings = <&kp N3>, <&kp LT>;
+                mods = <(MOD_LSFT|MOD_RSFT)>;
+            };
+
+            n6: n6_hash {
+                compatible = "zmk,behavior-mod-morph";
+                #binding-cells = <0>;
+                bindings = <&kp N6>, <&kp HASH>;
                 mods = <(MOD_LSFT|MOD_RSFT)>;
             };
 
@@ -156,13 +163,6 @@
                 bindings = <&kp V>, <&kp LC(V)>;
             };
 
-            tilde: tilde {
-                compatible = "zmk,behavior-mod-morph";
-                #binding-cells = <0>;
-                bindings = <&kp TILDE>, <&kp AT>; //~ @
-                mods = <(MOD_LSFT|MOD_RSFT)>;
-            };
-
             fslh_bslh: fslh_bslh {
                 compatible = "zmk,behavior-mod-morph";
                 #binding-cells = <0>;
@@ -170,10 +170,17 @@
                 mods = <(MOD_LSFT|MOD_RSFT)>;
             };
 
+            sqt_ctrl: sqt_ctrl {
+                compatible = "zmk,behavior-mod-morph";
+                #binding-cells = <0>;
+                bindings = <&kp LS(SQT)>, <&kp CARET>;
+                mods = <(MOD_LCTL|MOD_RCTL)>;
+            };
+
             sqt: sqt {
                 compatible = "zmk,behavior-mod-morph";
                 #binding-cells = <0>;
-                bindings = <&mt RGUI SQT>,<&kp LS(SQT)>;
+                bindings = <&mt RGUI SQT>, <&sqt_ctrl>;
                 mods = <(MOD_LSFT|MOD_RSFT)>;
             };
         
@@ -289,15 +296,14 @@
             compatible = "zmk,keymap";
  
             default_layer {
-
 bindings = <
     &kp F1      &kp F2      &kp F3      &kp F4      &kp F5                                                                                   &kp F6      &kp F7      &kp F8     &kp F9      &kp F12
-    &grave      &kp N1      &n2         &n3         &kp N4      &kp N5                                                              &kp N6   &kp N7      &n8         &n9        &n0         &tilde
+    &grave      &kp N1      &n2         &n3         &kp N4      &kp N5                                                              &n6   &kp N7      &n8         &n9        &n0         &kp TILDE
     &kp ESC     &kp Q       &kp W       &kp E       &kp R       &kp T                                                               &kp Y    &kp U       &kp I       &kp O      &kp P       &equal
     &kp TAB     &mt LGUI A  &mt LALT S  &mt LCTRL D &mt LSHFT F &kp G                                                               &kp H    &mt RSHFT J &mt RCTRL K &mt RALT L &sqt        &fslh_bslh
     &kp CAPS    &kp Z       &x          &c          &v          &kp B   &lpar     &nav      &pg    &none     &none    &rpar         &kp N    &kp M       &comma      &dot       &kp MINUS   &none
     &mo MAGIC   &kp HOME    &kp LEFT    &kp LC(LEFT)&kp UP              &kp BSPC  &kp DEL   &click &layer_td &kp RET  &kp SPACE              &kp DOWN    &kp RC(RIGHT)&kp RIGHT &kp END     &none
->; 
+>;
             };
 
             // default_lower_layer----------------------------------------------------------------------------------------------------------------------
