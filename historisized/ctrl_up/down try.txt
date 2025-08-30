@@ -1,0 +1,16 @@
+  ctrl_up: ctrl_up_key_repeat {
+                compatible = "zmk,behavior-macro-one-param";
+                #binding-cells = <1>;
+                bindings = <&kp>;
+                param-wait-ms = <0>;
+                param-tap-ms = <0>;
+            };
+
+            ctrl_down: ctrl_down_key_repeat {
+                compatible = "zmk,behavior-macro-one-param";
+                #binding-cells = <1>;
+                bindings = <&kp>;
+                param-wait-ms = <0>;
+                param-tap-ms = <0>;
+            };
+            
