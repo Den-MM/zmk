@@ -68,7 +68,7 @@
                 compatible = "zmk,behavior-hold-tap";
                 #binding-cells = <2>;
                 flavor = "tap-preferred";
-                tapping-term-ms = <200>;
+                tapping-term-ms = <150>;
                 bindings = <&kp>, <&kp>;
                 display-name = "Mod-Tap";
             };
@@ -145,21 +145,21 @@
             x: x_tap_dance {
                 compatible = "zmk,behavior-tap-dance";
                 #binding-cells = <0>;
-                tapping-term-ms = <200>;
+                tapping-term-ms = <150>;
                 bindings = <&kp X>, <&kp LC(X)>;  // First tap: C, Second tap: Ctrl+C
             };
 
-            c: c_tap_dance {
+            z: z_tap_dance {
                 compatible = "zmk,behavior-tap-dance";
                 #binding-cells = <0>;
-                tapping-term-ms = <200>;
-                bindings = <&kp C>, <&kp LC(C)>;  // First tap: C, Second tap: Ctrl+C
+                tapping-term-ms = <150>;
+                bindings = <&kp Z>, <&kp LC(C)>;  // First tap: C, Second tap: Ctrl+C
             };
 
             v: v_tap_dance {
                 compatible = "zmk,behavior-tap-dance";
                 #binding-cells = <0>;
-                tapping-term-ms = <200>;
+                tapping-term-ms = <150>;
                 bindings = <&kp V>, <&kp LC(V)>;
             };
 
@@ -235,7 +235,7 @@
             pg: pgup_pgdn {
                 compatible = "zmk,behavior-mod-morph";
                 #binding-cells = <0>;
-                bindings = <&kp PGDN>, <&kp PGUP>;
+                bindings = <&down_3>, <&up_3>;
                 mods = <(MOD_LSFT|MOD_RSFT)>;
             };
 
@@ -325,7 +325,7 @@ bindings = <
     &grave      &kp N1      &n2         &n3         &kp N4      &kp N5                                                              &n6   &kp N7      &n8         &n9        &n0         &kp TILDE
     &kp ESC     &kp Q       &kp W       &kp E       &kp R       &kp T                                                               &kp Y    &kp U       &kp I       &kp O      &kp P       &equal
     &kp TAB     &mt LGUI A  &mt LALT S  &mt LCTRL D &mt LSHFT F &kp G                                                               &kp H    &mt RSHFT J &mt RCTRL K &mt RALT L &sqt        &fslh_bslh
-    &kp CAPS    &kp Z       &x          &c          &v          &kp B   &lpar     &nav      &pg    &none     &none    &rpar         &kp N    &kp M       &comma      &dot       &kp MINUS   &none
+    &kp CAPS    &z       &x          &kp C          &v          &kp B   &lpar     &nav      &pg    &none     &none    &rpar         &kp N    &kp M       &comma      &dot       &kp MINUS   &mo MAGIC
     &mo MAGIC   &kp HOME    &kp LEFT    &kp LC(LEFT)&kp UP              &kp BSPC  &kp DEL   &click &layer_td &kp RET  &kp SPACE              &kp DOWN    &kp RC(RIGHT)&kp RIGHT &kp END     &none
 >;
             };
