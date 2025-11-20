@@ -249,47 +249,49 @@
                 mods = <(MOD_LSFT|MOD_RSFT)>;
             };
 
-            up_arrow: up_arrow_main {
-                compatible = "zmk,behavior-mod-morph";
-                #binding-cells = <0>;
-                mods = <(MOD_LALT|MOD_RALT)>;
-                bindings = <&up_ctrl_check>, <&up_alt_ctrl_check>;
-            };
+            // UP ARROW LOGIC
+        up_arrow: up_arrow_main {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            // 1. Check for Alt first.
+            mods = <(MOD_LALT|MOD_RALT)>;
+            // If Alt is NOT pressed, proceed to the Ctrl check.
+            // If Alt IS pressed, just send a normal UP. ZMK will preserve the Alt, Ctrl, and Shift modifiers.
+            bindings = <&up_ctrl_check>, <&kp UP>;
+        };
 
-            up_ctrl_check: up_ctrl_check {
-                compatible = "zmk,behavior-mod-morph";
-                #binding-cells = <0>;
-                mods = <(MOD_LCTL|MOD_RCTL)>;
-                bindings = <&kp UP>, <&up_3>;
-            };
+        // This is only triggered if Alt was NOT pressed.
+        up_ctrl_check: up_ctrl_check {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            // 2. Check for Ctrl.
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+            // If Ctrl is NOT pressed, send a normal UP.
+            // If Ctrl IS pressed, trigger your macro.
+            bindings = <&kp UP>, <&up_3>;
+        };
 
-            up_alt_ctrl_check: up_alt_ctrl_check {
-                compatible = "zmk,behavior-mod-morph";
-                #binding-cells = <0>;
-                mods = <(MOD_LCTL|MOD_RCTL)>;
-                bindings = <&kp LA(UP)>, <&ctrl_alt_up>;
-            };
+        // DOWN ARROW LOGIC
+        down_arrow: down_arrow_main {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            // 1. Check for Alt first.
+            mods = <(MOD_LALT|MOD_RALT)>;
+            // If Alt is NOT pressed, proceed to the Ctrl check.
+            // If Alt IS pressed, just send a normal DOWN.
+            bindings = <&down_ctrl_check>, <&kp DOWN>;
+        };
 
-            down_arrow: down_arrow_main {
-                compatible = "zmk,behavior-mod-morph";
-                #binding-cells = <0>;
-                mods = <(MOD_LALT|MOD_RALT)>;
-                bindings = <&down_ctrl_check>, <&down_alt_ctrl_check>;
-            };
-
-            down_ctrl_check: down_ctrl_check {
-                compatible = "zmk,behavior-mod-morph";
-                #binding-cells = <0>;
-                mods = <(MOD_LCTL|MOD_RCTL)>;
-                bindings = <&kp DOWN>, <&down_3>;
-            };
-
-            down_alt_ctrl_check: down_alt_ctrl_check {
-                compatible = "zmk,behavior-mod-morph";
-                #binding-cells = <0>;
-                mods = <(MOD_LCTL|MOD_RCTL)>;
-                bindings = <&kp LA(DOWN)>, <&ctrl_alt_down>;
-            };
+        // This is only triggered if Alt was NOT pressed.
+        down_ctrl_check: down_ctrl_check {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            // 2. Check for Ctrl.
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+            // If Ctrl is NOT pressed, send a normal DOWN.
+            // If Ctrl IS pressed, trigger your macro.
+            bindings = <&kp DOWN>, <&down_3>;
+        };
 
 
         };
