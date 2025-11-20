@@ -252,47 +252,21 @@
          up_arrow: up_arrow_main {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            // 1. Check for the primary modifier of our special case: Ctrl.
             mods = <(MOD_LCTL|MOD_RCTL)>;
-            // If Ctrl IS pressed: Proceed to the second check to look for the 'Alt' exception.
-            // If Ctrl is NOT pressed: It's a normal keypress. Handles Up, Shift+Up, Alt+Up, etc.
             bindings = <&kp UP>, <&up_alt_check>;
         };
 
-        // This behavior ONLY runs if Ctrl was already pressed.
         up_alt_check: up_alt_check {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            // 2. Now check for the exception modifier: Alt.
             mods = <(MOD_LALT|MOD_RALT)>;
-            // If Alt is NOT pressed (so, just Ctrl or Ctrl+Shift): Trigger the custom macro.
-            // If Alt IS pressed (Ctrl+Alt): Use the ctrl_alt_up macro.
+            keep-mods = <(MOD_LALT|MOD_RALT)>; 
             bindings = <&up_3>, <&ctrl_alt_up>;
         };
 
-        // --- DOWN ARROW LOGIC (identical structure) ---
-        down_arrow: down_arrow_main {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            // 1. Check for Ctrl.
-            mods = <(MOD_LCTL|MOD_RCTL)>;
-            bindings = <&kp DOWN>, <&kp LALT(UP)>;
-        };
-
-        // This behavior ONLY runs if Ctrl was already pressed.
-        down_alt_check: down_alt_check {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            // 2. Check for Alt.
-            mods = <(MOD_LALT|MOD_RALT)>;
-            bindings = <&down_3>, <&kp UP>;
-        };
-
-
-        };
+    };
 
         macros {
-
             up_3: macro_up_3 {
                 compatible = "zmk,behavior-macro";
                 wait-ms = <0>;
@@ -301,6 +275,15 @@
                 bindings = <&macro_press &kp LCTRL>
                          , <&macro_tap &kp UP &kp UP &kp UP>
                          , <&macro_release &kp LCTRL>;
+            };
+            ctrl_alt_up: macro_ctrl_alt_up {
+                compatible = "zmk,behavior-macro";
+                wait-ms = <0>;
+                tap-ms = <0>;
+                #binding-cells = <0>;
+                bindings = <&macro_press &kp LALT>
+                        , <&macro_tap &kp UP>        // ← Changed from LA(DOWN)
+                        , <&macro_release &kp LALT>;    // ← Added this
             };
 
             down_3: macro_down_3 {
@@ -312,17 +295,6 @@
                          , <&macro_tap &kp DOWN &kp DOWN &kp DOWN>
                          , <&macro_release &kp LCTRL>;
             };
-
-            ctrl_alt_up: macro_ctrl_alt_up {
-                compatible = "zmk,behavior-macro";
-                wait-ms = <0>;
-                tap-ms = <0>;
-                #binding-cells = <0>;
-                bindings = <&macro_press &kp LALT>
-                        , <&macro_tap &kp UP>        // ← Changed from LA(DOWN)
-                        , <&macro_release &kp LALT>;    // ← Added this
-            };
-
             ctrl_alt_down: macro_ctrl_alt_down {
                 compatible = "zmk,behavior-macro";
                 wait-ms = <0>;
