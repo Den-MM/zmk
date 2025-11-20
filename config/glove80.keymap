@@ -298,7 +298,7 @@
                 wait-ms = <0>;
                 tap-ms = <0>;
                 #binding-cells = <0>;
-                bindings = <&macro_tap &kp UP &kp UP &kp UP>
+                bindings = <&macro_tap &kp UP &kp UP &kp UP>;
             };
 
             down_3: macro_down_3 {
