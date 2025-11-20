@@ -249,32 +249,63 @@
                 mods = <(MOD_LSFT|MOD_RSFT)>;
             };
 
-        up_arrow: up_arrow_main {
+            up_arrow: up_arrow_main {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp UP>, <&up_ctrl_exclusive_check>;
+            mods = <(MOD_LALT|MOD_RALT)>;
+            // If ALT is NOT pressed, check for CTRL.
+            // If ALT IS pressed, check for CTRL with ALT held.
+            bindings = <&up_ctrl_check>, <&up_alt_ctrl_check>;
+        };
+
+        // This behavior is only triggered if ALT was NOT pressed.
+        up_ctrl_check: up_ctrl_check {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
             mods = <(MOD_LCTL|MOD_RCTL)>;
+            // If CTRL is NOT pressed, send a normal UP.
+            // If CTRL IS pressed, trigger up_3 (Ctrl+UP × 3).
+            bindings = <&kp UP>, <&up_3>;
         };
 
-        up_ctrl_exclusive_check: up_ctrl_exclusive_check {
+        // This behavior is only triggered if ALT WAS pressed.
+        up_alt_ctrl_check: up_alt_ctrl_check {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&up_3>, <&kp UP>;
-            mods = <(MOD_LALT|MOD_RALT|MOD_LSFT|MOD_RSFT)>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+            // If CTRL is NOT pressed, send Alt+UP.
+            // If CTRL IS pressed, send Ctrl+Alt+UP.
+            bindings = <&kp LA(UP)>, <&ctrl_alt_up>;
         };
 
+        // Main behavior for the DOWN arrow, checks for ALT first.
         down_arrow: down_arrow_main {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp DOWN>, <&down_ctrl_exclusive_check>;
-            mods = <(MOD_LCTL|MOD_RCTL)>;
+            mods = <(MOD_LALT|MOD_RALT)>;
+            // If ALT is NOT pressed, check for CTRL.
+            // If ALT IS pressed, check for CTRL with ALT held.
+            bindings = <&down_ctrl_check>, <&down_alt_ctrl_check>;
         };
 
-        down_ctrl_exclusive_check: down_ctrl_exclusive_check {
+        // This behavior is only triggered if ALT was NOT pressed.
+        down_ctrl_check: down_ctrl_check {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&down_3>, <&kp DOWN>;
-            mods = <(MOD_LALT|MOD_RALT|MOD_LSFT|MOD_RSFT)>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+            // If CTRL is NOT pressed, send a normal DOWN.
+            // If CTRL IS pressed, trigger down_3 (Ctrl+DOWN × 3).
+            bindings = <&kp DOWN>, <&down_3>;
+        };
+
+        // This behavior is only triggered if ALT WAS pressed.
+        down_alt_ctrl_check: down_alt_ctrl_check {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+            // If CTRL is NOT pressed, send Alt+DOWN.
+            // If CTRL IS pressed, send Ctrl+Alt+DOWN.
+            bindings = <&kp LA(DOWN)>, <&ctrl_alt_down>;
         };
 
 
@@ -302,24 +333,24 @@
                          , <&macro_release &kp LCTRL>;
             };
 
-            alt_up_3: macro_alt_up_3 {
+            ctrl_alt_up: macro_ctrl_alt_up {
                 compatible = "zmk,behavior-macro";
                 wait-ms = <0>;
                 tap-ms = <0>;
                 #binding-cells = <0>;
-                bindings = <&macro_press &kp LALT>
-                         , <&macro_tap &kp UP &kp UP &kp UP>
-                         , <&macro_release &kp LALT>;
+                bindings = <&macro_press &kp LCTRL &kp LALT>
+                         , <&macro_tap &kp UP>
+                         , <&macro_release &kp LCTRL &kp LALT>;
             };
 
-            alt_down_3: macro_alt_down_3 {
+            ctrl_alt_down: macro_ctrl_alt_down {
                 compatible = "zmk,behavior-macro";
                 wait-ms = <0>;
                 tap-ms = <0>;
                 #binding-cells = <0>;
-                bindings = <&macro_press &kp LALT>
-                         , <&macro_tap &kp DOWN &kp DOWN &kp DOWN>
-                         , <&macro_release &kp LALT>;
+                bindings = <&macro_press &kp LCTRL &kp LALT>
+                         , <&macro_tap &kp DOWN>
+                         , <&macro_release &kp LCTRL &kp LALT>;
             };
 
             bt_0: bt_profile_macro_0 {
