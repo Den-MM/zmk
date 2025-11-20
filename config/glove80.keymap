@@ -267,7 +267,7 @@
             mods = <(MOD_LALT|MOD_RALT)>;
             // If Alt is NOT pressed (so, just Ctrl or Ctrl+Shift): Trigger the custom macro.
             // If Alt IS pressed (Ctrl+Alt): Use the ctrl_alt_up macro.
-            bindings = <&up_3>, <&kp UP>;
+            bindings = <&up_3>, <&kp C(UP)>;
         };
 
         // --- DOWN ARROW LOGIC (identical structure) ---
