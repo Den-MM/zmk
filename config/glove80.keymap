@@ -319,9 +319,10 @@
                 tap-ms = <0>;
                 #binding-cells = <0>;
                 bindings = <&macro_press &kp LCTRL>
-                         , <&macro_press &kp LALT>
-                         , <&macro_tap &kp UP>
-                         , <&macro_release &kp LCTRL>;
+                        , <&macro_press &kp LALT>
+                        , <&macro_tap &kp UP>
+                        , <&macro_release &kp LALT>    // ← Added this
+                        , <&macro_release &kp LCTRL>;
             };
 
             ctrl_alt_down: macro_ctrl_alt_down {
@@ -330,9 +331,10 @@
                 tap-ms = <0>;
                 #binding-cells = <0>;
                 bindings = <&macro_press &kp LCTRL>
-                         , <&macro_press &kp LALT>
-                         , <&macro_tap &kp LA(DOWN)>
-                         , <&macro_release &kp LCTRL>;
+                        , <&macro_press &kp LALT>
+                        , <&macro_tap &kp DOWN>        // ← Changed from LA(DOWN)
+                        , <&macro_release &kp LALT>    // ← Added this
+                        , <&macro_release &kp LCTRL>;
             };
 
             bt_0: bt_profile_macro_0 {
