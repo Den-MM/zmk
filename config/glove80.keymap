@@ -266,8 +266,8 @@
             // 2. Now check for the exception modifier: Alt.
             mods = <(MOD_LALT|MOD_RALT)>;
             // If Alt is NOT pressed (so, just Ctrl or Ctrl+Shift): Trigger the custom macro.
-            // If Alt IS pressed (Ctrl+Alt): Treat it as a standard keypress.
-            bindings = <&up_3>, <&kp C(A(UP))>;
+            // If Alt IS pressed (Ctrl+Alt): Use the ctrl_alt_up macro.
+            bindings = <&up_3>, <&ctrl_alt_up>;
         };
 
         // --- DOWN ARROW LOGIC (identical structure) ---
@@ -285,7 +285,7 @@
             #binding-cells = <0>;
             // 2. Check for Alt.
             mods = <(MOD_LALT|MOD_RALT)>;
-            bindings = <&down_3>, <&kp C(A(DOWN))>;
+            bindings = <&down_3>, <&ctrl_alt_down>;
         };
 
 
@@ -319,7 +319,8 @@
                 tap-ms = <0>;
                 #binding-cells = <0>;
                 bindings = <&macro_press &kp LCTRL>
-                         , <&macro_tap &kp LA(UP)>
+                         , <&macro_press &kp LALT>
+                         , <&macro_tap &kp UP>
                          , <&macro_release &kp LCTRL>;
             };
 
@@ -329,6 +330,7 @@
                 tap-ms = <0>;
                 #binding-cells = <0>;
                 bindings = <&macro_press &kp LCTRL>
+                         , <&macro_press &kp LALT>
                          , <&macro_tap &kp LA(DOWN)>
                          , <&macro_release &kp LCTRL>;
             };
