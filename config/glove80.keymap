@@ -276,7 +276,7 @@
             #binding-cells = <0>;
             // 1. Check for Ctrl.
             mods = <(MOD_LCTL|MOD_RCTL)>;
-            bindings = <&kp DOWN>, <&down_alt_check>;
+            bindings = <&kp DOWN>, <&kp LALT(UP)>;
         };
 
         // This behavior ONLY runs if Ctrl was already pressed.
