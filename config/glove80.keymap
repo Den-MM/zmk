@@ -254,8 +254,8 @@
             #binding-cells = <0>;
             // 1. Check for the primary modifier of our special case: Ctrl.
             mods = <(MOD_LCTL|MOD_RCTL)>;
-            // If Ctrl is NOT pressed: It's a normal keypress. Handles Up, Shift+Up, Alt+Up, etc.
             // If Ctrl IS pressed: Proceed to the second check to look for the 'Alt' exception.
+            // If Ctrl is NOT pressed: It's a normal keypress. Handles Up, Shift+Up, Alt+Up, etc.
             bindings = <&kp UP>, <&up_alt_check>;
         };
 
@@ -267,7 +267,7 @@
             mods = <(MOD_LALT|MOD_RALT)>;
             // If Alt is NOT pressed (so, just Ctrl or Ctrl+Shift): Trigger the custom macro.
             // If Alt IS pressed (Ctrl+Alt): Treat it as a standard keypress.
-            bindings = <&up_3>, <&kp UP>;
+            bindings = <&up_3>, <&kp C(A(UP))>;
         };
 
         // --- DOWN ARROW LOGIC (identical structure) ---
@@ -285,7 +285,7 @@
             #binding-cells = <0>;
             // 2. Check for Alt.
             mods = <(MOD_LALT|MOD_RALT)>;
-            bindings = <&down_3>, <&kp DOWN>;
+            bindings = <&down_3>, <&kp C(A(DOWN))>;
         };
 
 
