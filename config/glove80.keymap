@@ -253,7 +253,7 @@
                 compatible = "zmk,behavior-mod-morph";
                 #binding-cells = <0>;
                 mods = <(MOD_LCTL|MOD_RCTL)>;
-                bindings = <&kp DOWN>, <&DOWN_alt_check>;
+                bindings = <&kp DOWN>, <&down_alt_check>;
             };
 
             down_alt_check: down_alt_check {
@@ -261,7 +261,7 @@
                 #binding-cells = <0>;
                 mods = <(MOD_LALT|MOD_RALT)>;
                 keep-mods = <(MOD_LALT|MOD_RALT)>; 
-                bindings = <&DOWN_3>, <&ctrl_alt_DOWN>;
+                bindings = <&down_3>, <&ctrl_alt_down>;
             };
 
             up_arrow: up_arrow_main {
