@@ -249,34 +249,35 @@
                 mods = <(MOD_LSFT|MOD_RSFT)>;
             };
 
-            up_arrow: up_arrow_alt { // to remove alt modification with ctrl
-                compatible = "zmk,behavior-mod-morph";
-                #binding-cells = <0>;
-                bindings = <&up_arrow_ctrl>, <&kp UP>;
-                mods = <(MOD_LALT|MOD_RALT)>;
-            };
+        up_arrow: up_arrow_main {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp UP>, <&up_ctrl_exclusive_check>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
 
-            up_arrow_ctrl: up_arrow_ctrl {
-                compatible = "zmk,behavior-mod-morph";
-                #binding-cells = <0>;
-                bindings = <&kp UP>, <&up_3>;
-                mods = <(MOD_LCTL|MOD_RCTL)>;
-            };
+        up_ctrl_exclusive_check: up_ctrl_exclusive_check {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&up_3>, <&kp UP>;
+            mods = <(MOD_LALT|MOD_RALT|MOD_LSFT|MOD_RSFT)>;
+        };
+
+        down_arrow: down_arrow_main {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp DOWN>, <&down_ctrl_exclusive_check>;
+            mods = <(MOD_LCTL|MOD_RCTL)>;
+        };
+
+        down_ctrl_exclusive_check: down_ctrl_exclusive_check {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&down_3>, <&kp DOWN>;
+            mods = <(MOD_LALT|MOD_RALT|MOD_LSFT|MOD_RSFT)>;
+        };
 
 
-            down_arrow: down_arrow_alt {
-                compatible = "zmk,behavior-mod-morph";
-                #binding-cells = <0>;
-                bindings = <&down_arrow_ctrl>, <&kp DOWN>;
-                mods = <(MOD_LALT|MOD_RALT)>;
-            };
- 
-            down_arrow_ctrl: down_arrow_ctrl {
-                compatible = "zmk,behavior-mod-morph";
-                #binding-cells = <0>;
-                bindings = <&kp DOWN>, <&down_3>;
-                mods = <(MOD_LCTL|MOD_RCTL)>;
-            };
         };
 
         macros {
@@ -286,7 +287,9 @@
                 wait-ms = <0>;
                 tap-ms = <0>;
                 #binding-cells = <0>;
-                bindings = <&kp UP &kp UP &kp UP>;
+                bindings = <&macro_press &kp LCTRL>
+                         , <&macro_tap &kp UP &kp UP &kp UP>
+                         , <&macro_release &kp LCTRL>;
             };
 
             down_3: macro_down_3 {
@@ -294,7 +297,29 @@
                 wait-ms = <0>;
                 tap-ms = <0>;
                 #binding-cells = <0>;
-                bindings = <&kp DOWN &kp DOWN &kp DOWN>;
+                bindings = <&macro_press &kp LCTRL>
+                         , <&macro_tap &kp DOWN &kp DOWN &kp DOWN>
+                         , <&macro_release &kp LCTRL>;
+            };
+
+            alt_up_3: macro_alt_up_3 {
+                compatible = "zmk,behavior-macro";
+                wait-ms = <0>;
+                tap-ms = <0>;
+                #binding-cells = <0>;
+                bindings = <&macro_press &kp LALT>
+                         , <&macro_tap &kp UP &kp UP &kp UP>
+                         , <&macro_release &kp LALT>;
+            };
+
+            alt_down_3: macro_alt_down_3 {
+                compatible = "zmk,behavior-macro";
+                wait-ms = <0>;
+                tap-ms = <0>;
+                #binding-cells = <0>;
+                bindings = <&macro_press &kp LALT>
+                         , <&macro_tap &kp DOWN &kp DOWN &kp DOWN>
+                         , <&macro_release &kp LALT>;
             };
 
             bt_0: bt_profile_macro_0 {
@@ -359,12 +384,12 @@
  
             default_layer {
 bindings = <
-    &kp F1      &kp F2      &kp F3      &kp F4      &kp F5                                                                                   &kp F6      &kp F7      &kp F8     &kp F9      &kp F12
-    &grave      &kp N1      &n2         &n3         &kp N4      &kp N5                                                              &n6      &kp N7      &n8         &n9        &n0         &kp TILDE
-    &kp ESC     &kp Q       &kp W       &kp E       &kp R       &kp T                                                               &kp Y    &kp U       &kp I       &kp O      &kp P       &equal
-    &kp TAB     &mtl LGUI A  &mt LALT S  &mt LCTRL D &mt LSHFT F &kp G                                                              &kp H    &mt RSHFT J &mt RCTRL K &mt RALT L &sqt        &fslh_bslh
-    &kp CAPS    &z       &x          &kp C          &v          &kp B   &lpar     &nav      &pg    &none     &none    &rpar         &kp N    &kp M       &comma      &dot       &kp MINUS   &mo MAGIC
-    &mo MAGIC   &kp HOME    &kp LEFT    &kp LC(LEFT)&up_arrow           &kp BSPC  &kp DEL   &click &layer_td &kp RET  &kp SPACE              &down_arrow &kp RC(RIGHT)&kp RIGHT &kp END     &none
+    &kp F1      &kp F2      &kp F3      &kp F4      &kp F5                                                                               &kp F6      &kp F7      &kp F8     &kp F9      &kp F12
+    &grave      &kp N1      &n2         &n3         &kp N4      &kp N5                                                          &n6      &kp N7      &n8         &n9        &n0         &kp TILDE
+    &kp ESC     &kp Q       &kp W       &kp E       &kp R       &kp T                                                           &kp Y    &kp U       &kp I       &kp O      &kp P       &equal
+    &kp TAB     &mtl LGUI A &mt LALT S  &mt LCTRL D &mt LSHFT F &kp G                                                           &kp H    &mt RSHFT J &mt RCTRL K &mt RALT L &sqt        &fslh_bslh
+    &kp CAPS    &z          &x          &kp C       &v          &kp B   &lpar     &nav      &pg    &none     &none    &rpar     &kp N    &kp M       &comma      &dot       &kp MINUS   &mo MAGIC
+    &mo MAGIC   &kp HOME    &kp LEFT    &kp LC(LEFT)&up_arrow           &kp BSPC  &kp DEL   &click &layer_td &kp RET  &kp SPACE          &down_arrow &kp RC(RIGHT)&kp RIGHT &kp END     &none
 >;
             };
 
