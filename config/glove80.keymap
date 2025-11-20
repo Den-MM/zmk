@@ -249,20 +249,35 @@
                 mods = <(MOD_LSFT|MOD_RSFT)>;
             };
 
-         up_arrow: up_arrow_main {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            mods = <(MOD_LCTL|MOD_RCTL)>;
-            bindings = <&kp UP>, <&up_alt_check>;
-        };
+            down_arrow: down_arrow_main {
+                compatible = "zmk,behavior-mod-morph";
+                #binding-cells = <0>;
+                mods = <(MOD_LCTL|MOD_RCTL)>;
+                bindings = <&kp DOWN>, <&DOWN_alt_check>;
+            };
 
-        up_alt_check: up_alt_check {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            mods = <(MOD_LALT|MOD_RALT)>;
-            keep-mods = <(MOD_LALT|MOD_RALT)>; 
-            bindings = <&up_3>, <&ctrl_alt_up>;
-        };
+            down_alt_check: down_alt_check {
+                compatible = "zmk,behavior-mod-morph";
+                #binding-cells = <0>;
+                mods = <(MOD_LALT|MOD_RALT)>;
+                keep-mods = <(MOD_LALT|MOD_RALT)>; 
+                bindings = <&DOWN_3>, <&ctrl_alt_DOWN>;
+            };
+
+            up_arrow: up_arrow_main {
+                compatible = "zmk,behavior-mod-morph";
+                #binding-cells = <0>;
+                mods = <(MOD_LCTL|MOD_RCTL)>;
+                bindings = <&kp UP>, <&up_alt_check>;
+            };
+
+            up_alt_check: up_alt_check {
+                compatible = "zmk,behavior-mod-morph";
+                #binding-cells = <0>;
+                mods = <(MOD_LALT|MOD_RALT)>;
+                keep-mods = <(MOD_LALT|MOD_RALT)>; 
+                bindings = <&up_3>, <&ctrl_alt_up>;
+            };
 
     };
 
