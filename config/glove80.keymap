@@ -316,7 +316,7 @@
                 #binding-cells = <0>;
                 bindings = <&macro_press &kp LALT>
                         , <&macro_tap &kp UP>        // ← Changed from LA(DOWN)
-                        , <&macro_release &kp LALT>    // ← Added this
+                        , <&macro_release &kp LALT>;    // ← Added this
             };
 
             ctrl_alt_down: macro_ctrl_alt_down {
