@@ -298,7 +298,9 @@
                 wait-ms = <0>;
                 tap-ms = <0>;
                 #binding-cells = <0>;
-                bindings = <&macro_tap &kp UP &kp UP &kp UP>;
+                bindings = <&macro_press &kp LCTRL>
+                         , <&macro_tap &kp UP &kp UP &kp UP>
+                         , <&macro_release &kp LCTRL>;
             };
 
             down_3: macro_down_3 {
@@ -306,7 +308,9 @@
                 wait-ms = <0>;
                 tap-ms = <0>;
                 #binding-cells = <0>;
-                bindings = <&macro_tap &kp DOWN &kp DOWN &kp DOWN>;
+                bindings = <&macro_press &kp LCTRL>
+                         , <&macro_tap &kp DOWN &kp DOWN &kp DOWN>
+                         , <&macro_release &kp LCTRL>;
             };
 
             ctrl_alt_up: macro_ctrl_alt_up {
