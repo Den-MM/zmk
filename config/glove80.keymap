@@ -37,6 +37,7 @@
     // @ = AT
     // € = RA(N5)
     // Ö,Ü,Ä = RA(Y),RA(P),RA(Q)
+    // &kp C_BRI_DN &kp C_BRI_UP (brightness up/down) &kp C_PREV   &kp C_NEXT  (prev/next track)    &kp C_PP (play/pause)   &kp C_MUTE   &kp C_VOL_DN  &kp C_VOL_UP
 
     #include <behaviors.dtsi>
     #include <dt-bindings/zmk/keys.h>
@@ -68,7 +69,7 @@
                 compatible = "zmk,behavior-hold-tap";
                 #binding-cells = <2>;
                 flavor = "tap-preferred";
-                tapping-term-ms = <70>;
+                tapping-term-ms = <100>;
                 bindings = <&kp>, <&kp>;
                 display-name = "Mod-Tap";
             };
@@ -248,20 +249,34 @@
                 mods = <(MOD_LSFT|MOD_RSFT)>;
             };
 
-            up_arrow: up_arrow {
+            up_arrow: up_arrow_alt { // to remove alt modification with ctrl
+                compatible = "zmk,behavior-mod-morph";
+                #binding-cells = <0>;
+                bindings = <&up_arrow_ctrl>, <&kp UP>;
+                mods = <(MOD_LALT|MOD_RALT)>;
+            };
+
+            up_arrow_ctrl: up_arrow_ctrl {
                 compatible = "zmk,behavior-mod-morph";
                 #binding-cells = <0>;
                 bindings = <&kp UP>, <&up_3>;
                 mods = <(MOD_LCTL|MOD_RCTL)>;
             };
 
-            down_arrow: down_arrow {
+
+            down_arrow: down_arrow_alt {
+                compatible = "zmk,behavior-mod-morph";
+                #binding-cells = <0>;
+                bindings = <&down_arrow_ctrl>, <&kp DOWN>;
+                mods = <(MOD_LALT|MOD_RALT)>;
+            };
+ 
+            down_arrow_ctrl: down_arrow_ctrl {
                 compatible = "zmk,behavior-mod-morph";
                 #binding-cells = <0>;
                 bindings = <&kp DOWN>, <&down_3>;
                 mods = <(MOD_LCTL|MOD_RCTL)>;
             };
- 
         };
 
         macros {
@@ -345,9 +360,9 @@
             default_layer {
 bindings = <
     &kp F1      &kp F2      &kp F3      &kp F4      &kp F5                                                                                   &kp F6      &kp F7      &kp F8     &kp F9      &kp F12
-    &grave      &kp N1      &n2         &n3         &kp N4      &kp N5                                                              &n6   &kp N7      &n8         &n9        &n0         &kp TILDE
+    &grave      &kp N1      &n2         &n3         &kp N4      &kp N5                                                              &n6      &kp N7      &n8         &n9        &n0         &kp TILDE
     &kp ESC     &kp Q       &kp W       &kp E       &kp R       &kp T                                                               &kp Y    &kp U       &kp I       &kp O      &kp P       &equal
-    &kp TAB     &kp A       &mt LALT S  &mt LCTRL D &mt LSHFT F &kp G                                                               &kp H    &mt RSHFT J &mt RCTRL K &mt RALT L &sqt        &fslh_bslh
+    &kp TAB     &mtl A       &mt LALT S  &mt LCTRL D &mt LSHFT F &kp G                                                              &kp H    &mt RSHFT J &mt RCTRL K &mt RALT L &sqt        &fslh_bslh
     &kp CAPS    &z       &x          &kp C          &v          &kp B   &lpar     &nav      &pg    &none     &none    &rpar         &kp N    &kp M       &comma      &dot       &kp MINUS   &mo MAGIC
     &mo MAGIC   &kp HOME    &kp LEFT    &kp LC(LEFT)&up_arrow           &kp BSPC  &kp DEL   &click &layer_td &kp RET  &kp SPACE              &down_arrow &kp RC(RIGHT)&kp RIGHT &kp END     &none
 >;
@@ -361,14 +376,14 @@ bindings = <
                 // | trans | CMENU |  none| F11  | F12  | PGDN | trans| trans|DEFULT| | trans| trans| trans |COMMA | KP_1  | KP_2  | KP_3  | KPENT | trans |
                 // | trans | CAPS  |  INS | F11  | F12  |      | trans| trans| trans| | trans| trans| trans |      | KP_0  | KP_0  | KP_DOT| KPENT | trans |
 
-lower_layer {
+        lower_layer {
 bindings = <
-    &kp C_BRI_DN    &kp C_BRI_UP  &kp C_PREV  &kp C_NEXT    &kp C_PP                                                                                                            &kp C_MUTE   &kp C_VOL_DN  &kp C_VOL_UP  &none          &kp PAUSE_BREAK
-    &trans      &none       &none           &none           &none           &kp HOME                                                                              &kp LPAR      &kp KP_NUM   &kp KP_EQUAL &kp KP_DIVIDE &kp KP_MULTIPLY &kp PSCRN
-    &trans      &none       &none           &kp UP          &none           &kp END                                                                               &kp RPAR      &kp KP_N7    &kp KP_N8    &kp KP_N9     &kp KP_MINUS    &umlaut_oe
-    &trans      &none       &kp LEFT        &kp DOWN        &kp RIGHT       &kp PG_UP                                                                             &kp PRCNT     &kp KP_N4    &kp KP_N5    &kp KP_N6     &kp RA(P)       &kp RA(Q)
-    &trans      &kp K_CMENU &none           &kp F11         &kp F12         &kp PG_DN       &trans      &trans      &to DEFAULT &trans      &trans      &trans    &kp COMMA     &kp KP_N1    &kp KP_N2    &kp KP_N3     &kp KP_ENTER    &trans
-    &trans      &kp CAPS    &kp INS         &kp F11         &kp F12                         &trans      &trans      &trans      &trans      &trans      &trans                  &kp KP_N0    &kp KP_N0    &kp KP_DOT    &kp KP_ENTER    &trans
+    &none   &none       &none       &kp C_NEXT  &kp C_PP                                                                                   &kp C_MUTE  &kp C_VOL_DN    &kp C_VOL_UP  &none     &kp PAUSE_BREAK
+    &trans  &none       &none       &none       &none       &kp HOME                                                               &none   &kp KP_NUM  &kp KP_EQUAL    &kp KP_DIVIDE &none     &kp PSCRN
+    &trans  &none       &none       &kp UP      &none       &kp END                                                                &none   &kp KP_N7   &kp KP_N8       &kp KP_N9     &none     &umlaut_oe
+    &trans  &none       &kp LEFT    &kp DOWN    &kp F11     &kp F12                                                                &none   &kp KP_N4   &kp KP_N5       &kp KP_N6     &kp RA(P) &kp RA(Q)
+    &trans  &kp K_CMENU &none       &kp F11     &kp F12     &kp PG_DN  &trans    &trans    &to DEFAULT &trans    &trans    &trans  &none   &kp KP_N1   &kp KP_N2       &kp KP_N3     &none     &trans
+    &trans  &kp CAPS    &kp INS     &kp F11     &kp F12                &trans    &trans    &trans      &trans    &trans    &trans          &kp KP_N0   &kp KP_N0       &kp KP_DOT    &none     &trans
 >;
 };
 
