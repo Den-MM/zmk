@@ -267,7 +267,7 @@
             mods = <(MOD_LALT|MOD_RALT)>;
             // If Alt is NOT pressed (so, just Ctrl or Ctrl+Shift): Trigger the custom macro.
             // If Alt IS pressed (Ctrl+Alt): Use the ctrl_alt_up macro.
-            bindings = <&up_3>, <&ctrl_alt_up>;
+            bindings = <&up_3>, <&kp UP>;
         };
 
         // --- DOWN ARROW LOGIC (identical structure) ---
@@ -285,7 +285,7 @@
             #binding-cells = <0>;
             // 2. Check for Alt.
             mods = <(MOD_LALT|MOD_RALT)>;
-            bindings = <&down_3>, <&ctrl_alt_down>;
+            bindings = <&down_3>, <&kp UP>;
         };
 
 
@@ -296,7 +296,7 @@
             up_3: macro_up_3 {
                 compatible = "zmk,behavior-macro";
                 wait-ms = <0>;
-                tap-ms = <10>;
+                tap-ms = <0>;
                 #binding-cells = <0>;
                 bindings = <&macro_press &kp LCTRL>
                          , <&macro_tap &kp UP &kp UP &kp UP>
@@ -306,7 +306,7 @@
             down_3: macro_down_3 {
                 compatible = "zmk,behavior-macro";
                 wait-ms = <0>;
-                tap-ms = <10>;
+                tap-ms = <0>;
                 #binding-cells = <0>;
                 bindings = <&macro_press &kp LCTRL>
                          , <&macro_tap &kp DOWN &kp DOWN &kp DOWN>
@@ -316,7 +316,7 @@
             ctrl_alt_up: macro_ctrl_alt_up {
                 compatible = "zmk,behavior-macro";
                 wait-ms = <0>;
-                tap-ms = <10>;
+                tap-ms = <0>;
                 #binding-cells = <0>;
                 bindings = <&macro_press &kp LCTRL>
                         , <&macro_press &kp LALT>
@@ -328,7 +328,7 @@
             ctrl_alt_down: macro_ctrl_alt_down {
                 compatible = "zmk,behavior-macro";
                 wait-ms = <0>;
-                tap-ms = <10>;
+                tap-ms = <0>;
                 #binding-cells = <0>;
                 bindings = <&macro_press &kp LCTRL>
                         , <&macro_press &kp LALT>
