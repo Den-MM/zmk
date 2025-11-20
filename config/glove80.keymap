@@ -362,7 +362,7 @@ bindings = <
     &kp F1      &kp F2      &kp F3      &kp F4      &kp F5                                                                                   &kp F6      &kp F7      &kp F8     &kp F9      &kp F12
     &grave      &kp N1      &n2         &n3         &kp N4      &kp N5                                                              &n6      &kp N7      &n8         &n9        &n0         &kp TILDE
     &kp ESC     &kp Q       &kp W       &kp E       &kp R       &kp T                                                               &kp Y    &kp U       &kp I       &kp O      &kp P       &equal
-    &kp TAB     &mtl A       &mt LALT S  &mt LCTRL D &mt LSHFT F &kp G                                                              &kp H    &mt RSHFT J &mt RCTRL K &mt RALT L &sqt        &fslh_bslh
+    &kp TAB     &mtl LGUI A  &mt LALT S  &mt LCTRL D &mt LSHFT F &kp G                                                              &kp H    &mt RSHFT J &mt RCTRL K &mt RALT L &sqt        &fslh_bslh
     &kp CAPS    &z       &x          &kp C          &v          &kp B   &lpar     &nav      &pg    &none     &none    &rpar         &kp N    &kp M       &comma      &dot       &kp MINUS   &mo MAGIC
     &mo MAGIC   &kp HOME    &kp LEFT    &kp LC(LEFT)&up_arrow           &kp BSPC  &kp DEL   &click &layer_td &kp RET  &kp SPACE              &down_arrow &kp RC(RIGHT)&kp RIGHT &kp END     &none
 >;
