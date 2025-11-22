@@ -38,6 +38,7 @@
     // € = RA(N5)
     // Ö,Ü,Ä = RA(Y),RA(P),RA(Q)
     // &kp C_BRI_DN &kp C_BRI_UP (brightness up/down) &kp C_PREV   &kp C_NEXT  (prev/next track)    &kp C_PP (play/pause)   &kp C_MUTE   &kp C_VOL_DN  &kp C_VOL_UP
+    // &kp PAUSE_BREAK
 
     #include <behaviors.dtsi>
     #include <dt-bindings/zmk/keys.h>
@@ -57,12 +58,12 @@
         behaviors {
 
             // For the "layer" key, it'd nice to be able to use it as either a shift or a toggle.
-            // Configure it as a tap dance, so the first tap (or hold) is a &mo and the second tap is a &to
+            // Configure it as a tap dance, so the first tap (or hold) is a &mo (hold) and the second tap is a &to (permanent layer switch)
             layer_td: tap_dance_0 {
                 compatible = "zmk,behavior-tap-dance";
                 #binding-cells = <0>;
                 tapping-term-ms = <500>;
-                bindings = <&mo LOWER>, <&to LOWER>;
+                bindings = <&mo LOWER> <&to LOWER>;
             };
 
             mt: mod_tap {
@@ -289,32 +290,12 @@
                          , <&macro_tap &kp UP &kp UP &kp UP>
                          , <&macro_release &kp LCTRL>;
             };
-            ctrl_alt_up: macro_ctrl_alt_up {
-                compatible = "zmk,behavior-macro";
-                wait-ms = <0>;
-                tap-ms = <0>;
-                #binding-cells = <0>;
-                bindings = <&macro_press &kp LALT>
-                        , <&macro_tap &kp UP>        // ← Changed from LA(DOWN)
-                        , <&macro_release &kp LALT>;    // ← Added this
-            };
             down_3: macro_down_3 {
                 compatible = "zmk,behavior-macro";
                 wait-ms = <0>;
                 tap-ms = <0>;
                 #binding-cells = <0>;
                 bindings = <&macro_tap &kp DOWN &kp DOWN &kp DOWN>;
-            };
-            ctrl_alt_down: macro_ctrl_alt_down {
-                compatible = "zmk,behavior-macro";
-                wait-ms = <0>;
-                tap-ms = <0>;
-                #binding-cells = <0>;
-                bindings = <&macro_press &kp LCTRL>
-                        , <&macro_press &kp LALT>
-                        , <&macro_tap &kp DOWN>        // ← Changed from LA(DOWN)
-                        , <&macro_release &kp LALT>    // ← Added this
-                        , <&macro_release &kp LCTRL>;
             };
 
             bt_0: bt_profile_macro_0 {
@@ -383,8 +364,8 @@ bindings = <
     &grave      &kp N1      &n2         &n3         &kp N4      &kp N5                                                          &n6      &kp N7      &n8         &n9        &n0         &kp TILDE
     &kp ESC     &kp Q       &kp W       &kp E       &kp R       &kp T                                                           &kp Y    &kp U       &kp I       &kp O      &kp P       &equal
     &kp TAB     &mtl LGUI A &mt LALT S  &mt LCTRL D &mt LSHFT F &kp G                                                           &kp H    &mt RSHFT J &mt RCTRL K &mt RALT L &sqt        &fslh_bslh
-    &kp CAPS    &z          &x          &kp C       &v          &kp B   &lpar     &nav      &pg    &none     &none    &rpar     &kp N    &kp M       &comma      &dot       &kp MINUS   &mo MAGIC
-    &mo MAGIC   &kp HOME    &kp LEFT    &kp LC(LEFT)&up_arrow           &kp BSPC  &kp DEL   &click &layer_td &kp RET  &kp SPACE          &down_arrow &kp RC(RIGHT)&kp RIGHT &kp END     &none
+    &kp CAPS    &z          &x          &kp C       &v          &kp B   &lpar     &nav      &pg    &kp F11   &kp F12  &rpar     &kp N    &kp M       &comma      &dot       &kp MINUS   &none
+    &to LOWER   &kp HOME    &kp LEFT    &kp LC(LEFT)&up_arrow           &kp BSPC  &kp DEL   &click &layer_td &kp RET  &kp SPACE          &down_arrow &kp RC(RIGHT)&kp RIGHT &kp END     &none
 >;
             };
 
@@ -398,12 +379,12 @@ bindings = <
 
         lower_layer {
 bindings = <
-    &none   &none       &none       &kp C_NEXT  &kp C_PP                                                                                   &kp C_MUTE  &kp C_VOL_DN    &kp C_VOL_UP  &none     &kp PAUSE_BREAK
-    &trans  &none       &none       &none       &none       &kp HOME                                                               &none   &kp KP_NUM  &kp KP_EQUAL    &kp KP_DIVIDE &none     &kp PSCRN
-    &trans  &none       &none       &kp UP      &none       &kp END                                                                &none   &kp KP_N7   &kp KP_N8       &kp KP_N9     &none     &umlaut_oe
-    &trans  &none       &kp LEFT    &kp DOWN    &kp F11     &kp F12                                                                &none   &kp KP_N4   &kp KP_N5       &kp KP_N6     &kp RA(P) &kp RA(Q)
-    &trans  &kp K_CMENU &none       &kp F11     &kp F12     &kp PG_DN  &trans    &trans    &to DEFAULT &trans    &trans    &trans  &none   &kp KP_N1   &kp KP_N2       &kp KP_N3     &none     &trans
-    &trans  &kp CAPS    &kp INS     &kp F11     &kp F12                &trans    &trans    &trans      &trans    &trans    &trans          &kp KP_N0   &kp KP_N0       &kp KP_DOT    &none     &trans
+    &kp F1      &kp F2      &kp F3      &kp F4      &kp F5                                                                               &kp F6      &kp F7      &kp F8     &kp F9      &kp F12
+    &grave      &kp N1      &n2         &n3         &kp N4      &kp N5                                                          &n6      &kp N7      &n8         &n9        &n0         &kp TILDE
+    &kp ESC     &kp Q       &kp W       &kp E       &kp R       &kp T                                                           &kp Y    &kp U       &kp I       &kp O      &kp P       &equal
+    &kp TAB     &kp A       &kp S       &kp D       &kp F       &kp G                                                           &kp H    &kp J       &kp K       &kp L      &sqt        &fslh_bslh
+    &kp CAPS    &z          &x          &kp C       &v          &kp B   &lpar     &nav      &pg    &none     &none    &rpar     &kp N    &kp M       &comma      &dot       &kp MINUS   &none
+    &mo MAGIC   &kp HOME    &kp LEFT    &kp LC(LEFT)&up_arrow           &kp BSPC  &kp DEL   &click &layer_td &kp RET  &kp SPACE          &down_arrow &kp RC(RIGHT)&kp RIGHT &kp END     &none
 >;
 };
 
