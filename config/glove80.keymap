@@ -63,7 +63,7 @@
                 compatible = "zmk,behavior-tap-dance";
                 #binding-cells = <0>;
                 tapping-term-ms = <500>;
-                bindings = <&mo LOWER> <&to LOWER>;
+                bindings = <&mo LOWER>, <&to LOWER>;
             };
 
             mt: mod_tap {
